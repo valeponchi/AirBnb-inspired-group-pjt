@@ -1,0 +1,10 @@
+Here a small list of what's expected your project to include:
+
+- A postgres database hosted in Elephantsql
+- Use Prisma.js as ORM to interact with the db
+- Backend built with Node.js and Express
+- Frontend with React.js
+- Frontend State management with Zustand
+- HTML Semantics across your frontend
+- Typescript across the backend and frontend
+- Minimal test coverage
