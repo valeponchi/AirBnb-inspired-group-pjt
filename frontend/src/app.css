@@ -1,0 +1,35 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+
+html {
+	--primary-red: #ff5a5f;
+	--primary-blue: #00a699;
+	--primary-orange: #fc642d;
+	--primary-dark-brown: #484848;
+	--primary-grey: #767676;
+
+	scroll-behavior: smooth;
+}
+
+body {
+	height: 100vh;
+}
+
+/* BASE STYLING  */
+h1 {
+	font-size: 3rem;
+}
+
+ul {
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+/* SECTIONS STYLING  */
