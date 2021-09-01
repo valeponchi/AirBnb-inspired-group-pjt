@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components"
 import {useHistory} from "react-router-dom"
-
+import HomePageCard from "../styled-components/HomePageCard";
 
 
 
@@ -31,19 +31,46 @@ function HomePage({className}){
             </div>
         </div>
         </header>
-        <img src="https://a0.muscache.com/im/pictures/57b9f708-bb12-498c-bc33-769f8fc43e63.jpg?im_w=2560" className="backgroundImage"/>
+        
         <main className="container">
-           
+           <section className="topSection">
+           <img src="https://a0.muscache.com/im/pictures/57b9f708-bb12-498c-bc33-769f8fc43e63.jpg?im_w=2560" className="backgroundImage"/>
         <form>
             <input type="text" className="searchBar" placeholder="Where you going?"/>
         </form>
+        <div className="headingWithButton">
         <h1>
         Not sure where to go? Perfect.
         </h1>
         <a className="flexibleButton" onClick={() => {
             history.push("/placestostay")
         }}>Im flexible</a>
+        </div>
        
+        </section>
+        <section className="liveAnywhereSection">
+         <h3>Live anywhere</h3>
+         <ul>
+           <HomePageCard/>
+           <HomePageCard/>
+           <HomePageCard/>
+           <HomePageCard/>
+         </ul>
+        </section>
+
+        <section className="tryHosting">
+            <div className="tryHostingImage">
+                <img className="image-3" src="https://a0.muscache.com/im/pictures/5b4dc94a-0b4c-4c27-b50f-9c5a5b93c775.jpg"/>
+                <div className="imageText">
+                    <h4>Try Hosting</h4>
+                    <a onClick={() => {
+                        history.push("/hosting")
+                    }}>Host</a>
+                    </div>
+                
+                </div>
+        </section>
+   
             
         </main>
         <footer>  
@@ -56,7 +83,7 @@ function HomePage({className}){
 export default styled(HomePage)`
 
     display: grid;
-    grid-template-rows: 150px 500px 100px;
+    grid-template-rows: 150px 1fr 100px;
    
     position: relative;
    
@@ -108,9 +135,17 @@ export default styled(HomePage)`
     main{
         display: grid;
         place-items: center;
+        
        
     
 
+    }
+
+    .headingWithButton{
+        display: grid;
+        place-items: center;
+        place-self: center;
+        grid-gap: 30px;
     }
 
 
@@ -149,5 +184,88 @@ export default styled(HomePage)`
         box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
        
     }
+
+    .topSection{
+        display: grid;
+        height: calc(100vh - 200px);
+        grid-template-rows: 100px 1fr;
+    }
+
+ .liveAnywhereSection{
+        display: grid;
+       
+        width: 100%;
+        grid-gap: 30px;
+
+    }
+
+    h3{
+        place-self: start;
+        font-size: 2rem;
+        
+    }
+
+    ul{
+        list-style-type: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 366px));
+        grid-gap: 20px;
+    }
+
+    .tryHosting{
+        margin-top: 100px;
+        width: 100%;
+        height: 500px;
+        margin-bottom: 60px;
+       
+    }
+
+    .tryHostingImage{
+        width: 100%;
+        display: grid;
+        overflow: hidden;
+        height: 500px;
+        border-radius: 20px;
+        position: relative;
+        
+        
+    }
+
+    
+    .image-3 {
+        width: 100%;
+  display: block;
+  object-fit: none;
+        object-fit: fill;
+        z-index: -5;
+      }
+
+      .imageText{
+          color: white;
+          position: absolute;
+          
+          top: 40%;
+          left: 100px;
+          display: grid;
+          grid-gap: 20px;
+      }
+
+      .imageText h4{
+        font-size: 3rem; 
+      }
+
+      .imageText a {
+          display: grid;
+          text-decoration: none;
+          background-color: white;
+          padding: 20px;
+          width: 100px;
+          place-items: center;
+          place-self: center;
+          border-radius: 20px;
+          color: black;
+      }
+
+   
 
 `
