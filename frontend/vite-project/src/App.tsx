@@ -20,6 +20,9 @@ function App() {
         <Route path="/placestostay">
           
         </Route>
+        <Route path="/hosting">
+          
+        </Route>
       </Switch>
     
     </div>
