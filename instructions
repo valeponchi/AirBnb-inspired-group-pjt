@@ -9,7 +9,4 @@ Here a small list of what's expected your project to include:
 - Typescript across the backend and frontend
 - Minimal test coverage
 
-# regarding the .env file:
-# you need to register into "https://developer.tomtom.com/" and save your personal-key into a variable called:
-TOMTOM=""
-# this way we will be able to use it from `process.env.TOMTOM`
+

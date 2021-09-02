@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["referentialActions"]
+}
+
+enum Role {
+  guest
+  host
+}
+
+// please note that these models are ready for the booking-implementation side of he app
+model User {
+  id                    Int                @id @default(autoincrement())
+  email                 String             @unique
+  password              String 
+  role                  Role               @default(guest)
+  info                  UserInfo[]
+
+  apartmentOwned        Apartment[]        @relation("host")    
+  apartmentRented       Apartment[]        @relation("guest")
+}
+
+model UserInfo {
+  id                    Int                @id @default(autoincrement())
+  user                  User               @relation(fields: [userId], references: [id])
+  userId                Int                 
+  firstName             String             @db.VarChar(20)
+  lastName              String             @db.VarChar(20)
+  dateOfBirth           String
+}
+
+model Apartment {
+  id                    Int                 @id @default(autoincrement())
+  priceNight            Int
+  bedrooms              Int
+  maxPeopleIn           Int
+  description           String
+
+  city                  String
+  postCode              String
+  road                  String
+
+  imageUrl1             String
+  imageUrl2             String?
+  imageUrl3             String?
+  extra                 ApartmentExtra?
+  location              ApartmentLocation[]
+
+  userOwner             User                @relation("host", fields: [userOwnerId], references: [id])
+  userOwnerId           Int
+
+  userRenting           User?               @relation("guest", fields: [userRentingId], references: [id])
+  userRentingId         Int?
+}
+
+ model ApartmentLocation {
+  id                    Int                 @id @default(autoincrement())
+  latitude              Float
+  longitude             Float
+  apartment             Apartment           @relation(fields: [apartmentId], references: [id])
+  apartmentId           Int                 
+ }
+
+ model ApartmentExtra {
+  id                    Int                 @id @default(autoincrement())
+  wifi                  Boolean?
+  smartTV               Boolean?
+  microwave             Boolean?
+  coffeeMaker           Boolean?
+  hotTub                Boolean?
+  parkingSpace          Boolean?
+  garden                Boolean?
+  pool                  Boolean?
+  gym                   Boolean?
+  apartment             Apartment          @relation(fields: [apartmentId], references: [id])
+  apartmentId           Int                
+ }
+

@@ -1,0 +1,8 @@
+## ROUTES FROM BACKEND:
+
+GET user => /users/:id
+GET user plus info => /users/:id/info
+GET all users => /users
+POST user => /users
+
+POST apartments => /users/:id/apartments
