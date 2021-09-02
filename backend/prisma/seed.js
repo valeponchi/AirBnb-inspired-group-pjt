@@ -18,6 +18,11 @@ const users = [
 		password: 'diana123',
 		role: 'host',
 	},
+	{
+		email: 'vale@vale.com',
+		password: 'vale123',
+		role: 'host',
+	},
 ]
 
 const userInfo = [
@@ -38,6 +43,12 @@ const userInfo = [
 		firstName: 'Diana',
 		lastName: 'Anaid',
 		dateOfBirth: '6 Apr 1988',
+	},
+	{
+		userId: 4,
+		firstName: 'Vale',
+		lastName: 'Elav',
+		dateOfBirth: '22 Nov 1985',
 	},
 ]
 
@@ -99,6 +110,101 @@ const apartments = [
 			'https://images.pexels.com/photos/3797991/pexels-photo-3797991.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
 		userOwnerId: 2,
 	},
+	{
+		priceNight: 40,
+		bedrooms: 1,
+		maxPeopleIn: 3,
+		description:
+			'High end, newly refurbished, 5 Star double room with shared bathroom. Spacious and well designed living and sleeping space complimented by our fully equipped modern kitchen. Décor is exceptional throughout. 5 mins walk to Battersea Park, 15 minutes to Clapham Junction and 15 minutes to South Kensington tube Station. Ideal for exploring all that Central London has to offer.',
+
+		city: 'London',
+		postCode: 'E2 0NJ',
+		road: '22 Moravian St, Bethnal Green',
+
+		imageUrl1:
+			'https://images.pexels.com/photos/1879061/pexels-photo-1879061.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+		imageUrl2:
+			'https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+		imageUrl3:
+			'https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+		userOwnerId: 3,
+	},
+	{
+		priceNight: 55,
+		bedrooms: 2,
+		maxPeopleIn: 5,
+		description:
+			'High end, newly refurbished, 5 Star double room with shared bathroom. Spacious and well designed living and sleeping space complimented by our fully equipped modern kitchen. Décor is exceptional throughout. 5 mins walk to Battersea Park, 15 minutes to Clapham Junction and 15 minutes to South Kensington tube Station. Ideal for exploring all that Central London has to offer.',
+
+		city: 'Wembley',
+		postCode: 'HA9 8HY',
+		road: '93A Oakington Avenue',
+
+		imageUrl1:
+			'https://images.pexels.com/photos/3316926/pexels-photo-3316926.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+		imageUrl2:
+			'https://images.pexels.com/photos/279746/pexels-photo-279746.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+		imageUrl3:
+			'https://images.pexels.com/photos/90317/pexels-photo-90317.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+		userOwnerId: 3,
+	},
+	{
+		priceNight: 35,
+		bedrooms: 1,
+		maxPeopleIn: 2,
+		description:
+			'High end, newly refurbished, 5 Star double room with shared bathroom. Spacious and well designed living and sleeping space complimented by our fully equipped modern kitchen. Décor is exceptional throughout. 5 mins walk to Battersea Park, 15 minutes to Clapham Junction and 15 minutes to South Kensington tube Station. Ideal for exploring all that Central London has to offer.',
+
+		city: 'London',
+		postCode: 'E5 0DD',
+		road: '268 Millfields Road, Lower Clapton',
+
+		imageUrl1:
+			'https://images.pexels.com/photos/2736139/pexels-photo-2736139.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+		imageUrl2:
+			'https://images.pexels.com/photos/7147287/pexels-photo-7147287.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+		imageUrl3:
+			'https://images.pexels.com/photos/3316926/pexels-photo-3316926.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+		userOwnerId: 2,
+	},
+	{
+		priceNight: 55,
+		bedrooms: 2,
+		maxPeopleIn: 5,
+		description:
+			'High end, newly refurbished, 5 Star double room with shared bathroom. Spacious and well designed living and sleeping space complimented by our fully equipped modern kitchen. Décor is exceptional throughout. 5 mins walk to Battersea Park, 15 minutes to Clapham Junction and 15 minutes to South Kensington tube Station. Ideal for exploring all that Central London has to offer.',
+
+		city: 'London',
+		postCode: 'SE15 4HS',
+		road: '29 Fenwick Road',
+
+		imageUrl1:
+			'https://images.pexels.com/photos/1329711/pexels-photo-1329711.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+		imageUrl2:
+			'https://images.pexels.com/photos/271743/pexels-photo-271743.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+		imageUrl3:
+			'https://images.pexels.com/photos/3965521/pexels-photo-3965521.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+		userOwnerId: 3,
+	},
+	{
+		priceNight: 40,
+		bedrooms: 2,
+		maxPeopleIn: 5,
+		description:
+			'High end, newly refurbished, 5 Star double room with shared bathroom. Spacious and well designed living and sleeping space complimented by our fully equipped modern kitchen. Décor is exceptional throughout. 5 mins walk to Battersea Park, 15 minutes to Clapham Junction and 15 minutes to South Kensington tube Station. Ideal for exploring all that Central London has to offer.',
+
+		city: 'London',
+		postCode: 'SE6 3QN',
+		road: '65 Sedgehill Road',
+
+		imageUrl1:
+			'https://images.pexels.com/photos/439227/pexels-photo-439227.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+		imageUrl2:
+			'https://images.pexels.com/photos/916337/pexels-photo-916337.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+		imageUrl3:
+			'https://images.pexels.com/photos/6315803/pexels-photo-6315803.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+		userOwnerId: 1,
+	},
 ]
 
 const apartmentLocation = [
@@ -116,6 +222,31 @@ const apartmentLocation = [
 		apartmentId: 3,
 		latitude: 51.4905907,
 		longitude: -0.150862,
+	},
+	{
+		apartmentId: 4,
+		latitude: 51.5292276,
+		longitude: -0.0517115,
+	},
+	{
+		apartmentId: 5,
+		latitude: 51.4966782,
+		longitude: -0.4330496,
+	},
+	{
+		apartmentId: 6,
+		latitude: 51.5576641,
+		longitude: -0.0416914,
+	},
+	{
+		apartmentId: 7,
+		latitude: 51.4635207,
+		longitude: -0.068523,
+	},
+	{
+		apartmentId: 8,
+		latitude: 51.4235896,
+		longitude: -0.0219719,
 	},
 ]
 
@@ -137,6 +268,46 @@ const apartmentExtra = [
 	},
 	{
 		apartmentId: 3,
+		wifi: true,
+		smartTV: true,
+		microwave: true,
+		parkingSpace: true,
+		coffeeMaker: true,
+	},
+	{
+		apartmentId: 4,
+		wifi: true,
+		smartTV: true,
+		microwave: true,
+		parkingSpace: true,
+		coffeeMaker: true,
+	},
+	{
+		apartmentId: 5,
+		wifi: true,
+		smartTV: true,
+		microwave: true,
+		parkingSpace: true,
+		coffeeMaker: true,
+	},
+	{
+		apartmentId: 6,
+		wifi: true,
+		smartTV: true,
+		microwave: true,
+		parkingSpace: true,
+		coffeeMaker: true,
+	},
+	{
+		apartmentId: 7,
+		wifi: true,
+		smartTV: true,
+		microwave: true,
+		parkingSpace: true,
+		coffeeMaker: true,
+	},
+	{
+		apartmentId: 8,
 		wifi: true,
 		smartTV: true,
 		microwave: true,

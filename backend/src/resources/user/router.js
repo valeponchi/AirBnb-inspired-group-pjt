@@ -1,9 +1,16 @@
 const userRouter = require('express').Router()
 
-const { createOneUser, getOneUser, getAllUsers } = require('./controller')
+const {
+	createOneUser,
+	getOneUser,
+	getAllUsers,
+	getOneUserPlusInfo,
+} = require('./controller')
 const { createOneApartment } = require('../apartment/controller')
 
 userRouter.get('/:id', getOneUser)
+userRouter.get('/:id/info', getOneUserPlusInfo)
+
 userRouter.get('/', getAllUsers)
 
 userRouter.post('/', createOneUser)

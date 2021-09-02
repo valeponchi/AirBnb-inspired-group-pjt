@@ -40,4 +40,19 @@ const getOneUser = async (req, res) => {
 	res.json({ data: oneUser })
 }
 
-module.exports = { createOneUser, getOneUser, getAllUsers }
+// GET ONE USER PLUS INFO
+const getOneUserPlusInfo = async (req, res) => {
+	const { id } = req.params
+
+	const oneUser = await user.findUnique({
+		where: { id: parseInt(id) },
+		select: {
+			email: true,
+			role: true,
+			info: true,
+		},
+	})
+	res.json({ data: oneUser })
+}
+
+module.exports = { createOneUser, getOneUser, getAllUsers, getOneUserPlusInfo }

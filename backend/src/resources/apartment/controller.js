@@ -69,19 +69,21 @@ async function createOneApartment(req, res) {
 }
 
 // // //GET ALL APARTMENT
-const getAllApartments = async (req, res) => {
-	const allApartments = await apartment.findMany()
-	res.json({ data: allApartments })
-}
+// const getAllApartments = async (req, res) => {
+// 	const allApartments = await apartment.findMany()
+// 	res.json({ data: allApartments })
+// }
 
-// // //GET ONE APARTMENT
-const getOneApartment = async (req, res) => {
-	const { id } = req.params
+// // // //GET ONE APARTMENT
+// const getOneApartment = async (req, res) => {
+// 	const { id } = req.params
 
-	const oneApartment = await apartment.findUnique({
-		where: { id: parseInt(id) },
-	})
-	res.json({ data: oneApartment })
-}
+// 	const oneApartment = await apartment.findUnique({
+// 		where: {
+//       id: parseInt(id)
+//     },
+// 	})
+// 	res.json({ data: oneApartment })
+// }
 
-module.exports = { createOneApartment, getAllApartments, getOneApartment }
+module.exports = { createOneApartment }
