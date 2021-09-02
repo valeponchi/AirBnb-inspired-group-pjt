@@ -1,6 +1,9 @@
+//include (get something from the same model)
+//select (connects models with relationship)
+
 // const { runway } = require('../../utils/dbClient')
 
-// //CREATE ONE RUNWAY
+//CREATE ONE RUNWAY
 // async function createOneRunway(req, res) {
 // 	const { designerId, season, date, location } = req.body
 

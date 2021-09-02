@@ -30,11 +30,12 @@ model User {
 }
 
 model UserInfo {
-  user                  User                @relation(fields: [userId], references: [id])
-  userId                Int                 @unique
-  firstName             String
-  lastName              String
-  dateOfBirth           DateTime
+  id                    Int                @id @default(autoincrement())
+  user                  User               @relation(fields: [userId], references: [id])
+  userId                Int                 
+  firstName             String             @db.VarChar(20)
+  lastName              String             @db.VarChar(20)
+  dateOfBirth           String
 }
 
 model Apartment {
@@ -51,7 +52,7 @@ model Apartment {
   imageUrl1             String
   imageUrl2             String?
   imageUrl3             String?
-  extra                 apartmentExtra?
+  extra                 ApartmentExtra?
   location              ApartmentLocation[]
 
   userOwner             User                @relation("host", fields: [userOwnerId], references: [id])
@@ -62,13 +63,15 @@ model Apartment {
 }
 
  model ApartmentLocation {
-  latitude              Int
-  longitude             Int
+  id                    Int                 @id @default(autoincrement())
+  latitude              Float
+  longitude             Float
   apartment             Apartment           @relation(fields: [apartmentId], references: [id])
-  apartmentId           Int                 @unique
+  apartmentId           Int                 
  }
 
- model apartmentExtra {
+ model ApartmentExtra {
+  id                    Int                 @id @default(autoincrement())
   wifi                  Boolean?
   smartTV               Boolean?
   microwave             Boolean?
@@ -79,6 +82,6 @@ model Apartment {
   pool                  Boolean?
   gym                   Boolean?
   apartment             Apartment          @relation(fields: [apartmentId], references: [id])
-  apartmentId           Int                @unique
+  apartmentId           Int                
  }
 
