@@ -2,17 +2,22 @@ import React from "react";
 import styled from "styled-components"
 import {useHistory} from "react-router-dom"
 import HomePageCard from "../styled-components/HomePageCard";
+import Logo from "../components/Logo";
+import SearchBar from "../components/SearchBar";
+import BecomeAHost from "../components/BecomeAHost";
 
 
 
 function HomePage({className}){
 
+
     const history = useHistory()
+
 
     return(
         <div className={className}>
         <header className="container">
-        <img src="../src/assets/images/logo.png" alt="logo" className="airbnbLogo" />
+        <Logo/>
         <nav>
         <a onClick={() => {
             history.push("/placestostay")
@@ -20,24 +25,13 @@ function HomePage({className}){
             Place to stay
         </a>
         </nav>
-        <div className="rightColumn">
-            <a onClick={() => {
-                history.push("")
-            }}>
-                Become a host
-            </a>
-            <div className="currentLoggedIn">
-                Logged in as Guest
-            </div>
-        </div>
+       <BecomeAHost/>
         </header>
         
         <main className="container">
            <section className="topSection">
            <img src="https://a0.muscache.com/im/pictures/57b9f708-bb12-498c-bc33-769f8fc43e63.jpg?im_w=2560" className="backgroundImage"/>
-        <form>
-            <input type="text" className="searchBar" placeholder="Where you going?"/>
-        </form>
+           <SearchBar/>
         <div className="headingWithButton">
         <h1>
         Not sure where to go? Perfect.
@@ -96,9 +90,7 @@ export default styled(HomePage)`
         color: white;
     }
 
-    .airbnbLogo{
-        width: 150px
-    }
+  
 
     nav{
         display: grid;
@@ -106,23 +98,7 @@ export default styled(HomePage)`
         color: white;
     }
 
-    .currentLoggedIn{
-        padding: 10px;
-        border: 1px solid white;
-        
-    }
-
-    .rightColumn{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 10px;
-       
-        place-items: center;
-    
-
-    }
-
- 
+  
     .backgroundImage{
        position: absolute;
        top: 0;
@@ -150,21 +126,7 @@ export default styled(HomePage)`
 
 
 
-    .searchBar{
-        background-color: white;
-        width: 500px;
-        padding: 10px;
-        border: none;
-        border-radius: 20px;
-
-    }
-
-    form{
-        align-self: start;
-    }
-    input{
-        margin-right: 50px;
-    }
+  
 
     h1{
        align-self: center;
