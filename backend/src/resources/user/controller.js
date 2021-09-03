@@ -1,7 +1,9 @@
 //include (get something from the same model)
 //select (connects models with relationship)
 
+const { createToken } = require('../../utils/authGenerator')
 const { user } = require('../../utils/dbClient')
+const { createdWithHash } = require('../auth/services')
 
 //CREATE ONE USER
 async function createOneUser(req, res) {
@@ -20,8 +22,20 @@ async function createOneUser(req, res) {
 		},
 	}
 
-	const createdUser = await user.create({ data: newUser })
-	res.json({ data: createdUser })
+	const savedUser = await createdWithHash(newUser)
+
+	const token = createToken({
+		id: savedUser.id,
+		email: savedUser.email,
+	})
+	res.cookie('token', token, { httpOnly: true })
+
+	res.json({
+		user: {
+			role: savedUser.role,
+			email: savedUser.email,
+		},
+	})
 }
 
 // //GET ALL USERS
@@ -55,4 +69,83 @@ const getOneUserPlusInfo = async (req, res) => {
 	res.json({ data: oneUser })
 }
 
-module.exports = { createOneUser, getOneUser, getAllUsers, getOneUserPlusInfo }
+const getAllApartments = async (req, res) => {
+	const { id } = req.params
+	const relatedApartments = await user.findMany({
+		where: {
+			id: parseInt(id),
+		},
+		include: {
+			apartmentOwned: {
+				select: {
+					priceNight: true,
+					bedrooms: true,
+					maxPeopleIn: true,
+					description: true,
+
+					city: true,
+					postCode: true,
+					road: true,
+
+					imageUrl1: true,
+					imageUrl2: true,
+					imageUrl3: true,
+					extra: true,
+				},
+			},
+		},
+	})
+	res.json({ data: relatedApartments })
+}
+
+// const updateOneUser = async (req, res) => {
+// 	const id = parseInt(req.params.id)
+// 	const updatedInfo = req.body
+// 	try {
+// 		const userToUpdate = await user.findUnique({
+// 			where: { id },
+// 		})
+
+// 		if (userToUpdate) {
+// 			const userUpdated = await user.update({
+// 				where: { id },
+// 				data: { ...userToUpdate, ...updatedInfo },
+// 				include: { extra: true },
+// 			})
+// 			res.json({ data: userUpdated })
+// 		}
+// 	} catch (error) {
+// 		res.status(404).json({ error: "Not able to update user's data" })
+// 	}
+// }
+
+// const updateOneApartment = async (req, res) => {
+// 	const id = parseInt(req.params.id)
+// 	const updatedInfo = req.body
+// 	try {
+// 		const apartmentToUpdate = await user.findUnique({
+// 			where: { id },
+// 		})
+
+// 		if (userToUpdate) {
+// 			const userUpdated = await user.update({
+// 				where: { id },
+// 				data: { ...userToUpdate, ...updatedInfo },
+// 				include: { extra: true },
+// 			})
+// 			res.json({ data: userUpdated })
+// 		}
+// 	} catch (error) {
+// 		res.status(404).json({ error: "Not able to update user's data" })
+// 	}
+// }
+
+module.exports = {
+	getAllApartments,
+	createOneUser,
+	getOneUser,
+	getAllUsers,
+	getOneUserPlusInfo,
+	// updateOneUser,
+	// updateOneApartment
+}

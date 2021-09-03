@@ -5,23 +5,30 @@ const {
 	getOneUser,
 	getAllUsers,
 	getOneUserPlusInfo,
+	getAllApartments,
+	// updateOneUser,
 } = require('./controller')
-const { createOneApartment } = require('../apartment/controller')
+const {
+	createOneApartment,
+	// updateOneApartment
+} = require('../apartment/controller')
 
 //USER
 userRouter.post('/', createOneUser)
 userRouter.get('/:id', getOneUser)
 userRouter.get('/:id/info', getOneUserPlusInfo)
-//***patch needs to be created
+// userRouter.patch('/:id', updateOneUser)
 
 //USERS
 userRouter.get('/', getAllUsers)
 
 //CREATE ONE USER'S APARTMENT
 userRouter.post('/:id/apartments', createOneApartment)
-//***patch needs to be created
+// userRouter.patch('/:id/apartments/:id', updateOneApartment)
 
 //GET ONE USER'S APARTMENT
+userRouter.get('/:id/apartments', getAllApartments)
+// userRouter.get('/:id/apartments/:id', getOneApartment)
 
 //GET ALL USER'S APARTMENTS
 
