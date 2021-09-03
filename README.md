@@ -9,7 +9,7 @@ JWT_SECRET="yourSecretWord"
 
 ### Frontend
 
-Run Command for modules npm i 
+Run Command for modules in vite-project file command ( npm i )
 
 To start frontend server cd frontend cd vite-project npm run dev
 
