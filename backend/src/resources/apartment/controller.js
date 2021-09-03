@@ -1,7 +1,7 @@
 //include (get something from the same model)
 //select (connects models with relationship)
 //connect (on create/update if you have to connect a model to another)
-
+const nodeFetch = require('node-fetch')
 const { apartment } = require('../../utils/dbClient')
 
 //CREATE ONE USER'S APARTMENT
@@ -52,6 +52,12 @@ async function createOneApartment(req, res) {
 				garden,
 				pool,
 				gym,
+			},
+		},
+		location: {
+			create: {
+				latitude,
+				longitude,
 			},
 		},
 	}
