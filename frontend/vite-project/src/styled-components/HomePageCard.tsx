@@ -13,7 +13,7 @@ function HomePageCard({className}){
         <img src="../src/assets/images/homepageimage.jpeg" alt="Durham" onClick={(e) => {
             const search = e.target.alt
             
-            history.push(`/staysin/${search}`)}} />
+            history.push(`/staysin/${search}`)}} className="pointer" />
         <h3>Getaways</h3>
     </li>
   

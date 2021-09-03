@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import './styleSheets/App.css'
 import {Switch, Route, Redirect} from "react-router";
 import HomePage from './pages/HomePage';
-import Header from './components/Header';
 
+import PlacesToStayPage from './pages/PlacesToStayPage';
 
 function App() {
 
@@ -19,10 +19,9 @@ function App() {
           <HomePage/>
         </Route>
         <Route path="/placestostay">
-          
+          <PlacesToStayPage/>
         </Route>
         <Route path="/hosting">
-          <Header/>
         </Route>
 
         <Route path="/staysin/:search">

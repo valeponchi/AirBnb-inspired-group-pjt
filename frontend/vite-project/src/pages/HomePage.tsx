@@ -21,7 +21,7 @@ function HomePage({className}){
         <nav>
         <a onClick={() => {
             history.push("/placestostay")
-        }}>
+        }} className="pointer navAnimation">
             Place to stay
         </a>
         </nav>
@@ -36,9 +36,9 @@ function HomePage({className}){
         <h1>
         Not sure where to go? Perfect.
         </h1>
-        <a className="flexibleButton" onClick={() => {
+        <a className="flexibleButton pointer" onClick={() => {
             history.push("/placestostay")
-        }}>Im flexible</a>
+        }} >Im flexible</a>
         </div>
        
         </section>
@@ -59,7 +59,7 @@ function HomePage({className}){
                     <h4>Try Hosting</h4>
                     <a onClick={() => {
                         history.push("/hosting")
-                    }}>Host</a>
+                    }} className="pointer">Host</a>
                     </div>
                 
                 </div>
@@ -124,6 +124,10 @@ export default styled(HomePage)`
         grid-gap: 30px;
     }
 
+
+    .navAnimation{
+        
+    }
 
 
   
@@ -192,6 +196,8 @@ export default styled(HomePage)`
         
         
     }
+
+    
 
     
     .image-3 {

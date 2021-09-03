@@ -16,7 +16,7 @@ function BecomeAHost({className}){
         <div className={className}>
         <a onClick={() => {
             history.push("/hosting")
-        }}>
+        }} className="pointer">
             Become a host
         </a>
         <div className="accountPill">
