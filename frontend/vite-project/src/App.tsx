@@ -4,6 +4,7 @@ import {Switch, Route, Redirect} from "react-router";
 import HomePage from './pages/HomePage';
 
 import PlacesToStayPage from './pages/PlacesToStayPage';
+import StaysInAreaPage from './pages/StaysInAreaPage';
 
 function App() {
 
@@ -25,7 +26,7 @@ function App() {
         </Route>
 
         <Route path="/staysin/:search">
-
+        <StaysInAreaPage/>
         </Route>
       </Switch>
     
