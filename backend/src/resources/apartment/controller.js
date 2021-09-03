@@ -1,9 +1,10 @@
 //include (get something from the same model)
 //select (connects models with relationship)
+//connect (on create/update if you have to connect a model to another)
 
 const { apartment } = require('../../utils/dbClient')
 
-//CREATE ONE APARTMENT
+//CREATE ONE USER'S APARTMENT
 async function createOneApartment(req, res) {
 	const userOwnerId = req.params.id
 	console.log('userOwnerId: ', userOwnerId)
@@ -68,13 +69,7 @@ async function createOneApartment(req, res) {
 	res.json({ data: createdApartment })
 }
 
-// // //GET ALL APARTMENT
-// const getAllApartments = async (req, res) => {
-// 	const allApartments = await apartment.findMany()
-// 	res.json({ data: allApartments })
-// }
-
-// // // //GET ONE APARTMENT
+//GET ONE USER'S APARTMENT
 // const getOneApartment = async (req, res) => {
 // 	const { id } = req.params
 

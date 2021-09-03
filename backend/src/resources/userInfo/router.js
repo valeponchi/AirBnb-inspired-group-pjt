@@ -1,10 +1,2 @@
-// const runwayRouter = require('express').Router()
-
-// const { getAllRunways, createOneRunway, getOneRunway } = require('./controller')
-
-// runwayRouter.get('/', getAllRunways)
-// runwayRouter.get('/:id', getOneRunway)
-
-// runwayRouter.post('/', createOneRunway)
-
-// module.exports = runwayRouter
+// GO TO USER ROUTER
+// REASON: to get the apartments we need the userId
