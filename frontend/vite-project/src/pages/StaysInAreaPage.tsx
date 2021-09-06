@@ -1,4 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+
+import { useParams } from "react-router-dom";
+
 import styled from "styled-components";
 import Header from "../components/Header";
 import useStore, { Apartment } from "../store";
@@ -13,7 +16,7 @@ import {
 } from "react-leaflet";
 
 import "leaflet/dist/leaflet.css";
-import { useHistory } from "react-router";
+import StaysInAreaCards from "../components/StaysInAreaCards";
 
 const PageBodyContainer = styled.div`
   display: grid;
@@ -24,6 +27,7 @@ const PageBodyContainer = styled.div`
 
     height: 100vh:
     width: 100%;
+    background-color: blue;
   }
 
   .map {
@@ -48,27 +52,64 @@ export default function StaysInAreaPage() {
 
   const animateRef = useRef(true);
 
-  let apartmentsBySpecificLocation = useStore(
-    store => store.apartmentsBySpecificLocation
-  );
+  let { search } = useParams();
 
-  console.log(apartmentsBySpecificLocation);
+  const [apartments, setApartments] = useState([]);
+  const [whatever, setWhatever] = useState(false);
 
-  const center = [
-    apartmentsBySpecificLocation[0].location[0].latitude,
-    apartmentsBySpecificLocation[0].location[0].longitude,
-  ];
+  useEffect(() => {
+    fetch(`http://localhost:4000/users/apartments/${search}`)
+      .then(res => res.json())
+      .then(data => setApartments(data));
+  }, [apartments.length, setWhatever, setApartments, search]);
+  debugger;
 
-  useEffect(() => {}, []);
+  // const center = [
+  //   apartments[0].location[0].latitude,
+  //   apartments[0].location[0].longitude,
+  // ];
+
+  // console.log(center);
+
+  // const testFunction = () => {
+  //   if (apartments.length <= 0) {
+  //     return <h1>Loading content...</h1>;
+  //   } else {
+  //   }
+  // };
+
+  // let apartmentsBySpecificLocation = useStore(
+  //   store => store.apartmentsBySpecificLocation
+  // );
+  // const fetchApartmentsBySpecificLocation = useStore(
+  //   store => store.fetchApartmentsBySpecificLocation
+  // );
+
+  // useEffect(() => {
+  //   fetchApartmentsBySpecificLocation(search);
+  //   if (apartmentsBySpecificLocation.length > 0) {
+  //     console.log(apartmentsBySpecificLocation);
+  //   }
+  // }, [apartmentsBySpecificLocation]);
 
   return (
     <>
       <Header />
       <PageBodyContainer>
-        <div className="cards">Cards</div>
+        <div className="cards">
+          <StaysInAreaCards />
+        </div>
+
         <MapContainer
           className="map"
-          center={center}
+          center={
+            apartments.length > 0
+              ? [
+                  apartments[0].location[0].latitude,
+                  apartments[0].location[0].longitude,
+                ]
+              : [0, 0]
+          }
           zoom={13}
           scrollWheelZoom={false}
         >
@@ -77,7 +118,7 @@ export default function StaysInAreaPage() {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
 
-          {apartmentsBySpecificLocation.map((apartment, index) => (
+          {apartments.map((apartment, index) => (
             <Marker
               key={index}
               position={[
