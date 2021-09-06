@@ -45,6 +45,7 @@ function HomePage({className}){
         <section className="liveAnywhereSection">
          <h3>Live anywhere</h3>
          <ul>
+             {/* Need to fetch from server for diffrent cities card */}
            <HomePageCard/>
            <HomePageCard/>
            <HomePageCard/>
@@ -126,7 +127,7 @@ export default styled(HomePage)`
 
 
     .navAnimation{
-        
+
     }
 
 

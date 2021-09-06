@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './styleSheets/App.css'
 import {Switch, Route, Redirect} from "react-router";
 import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
 
 import PlacesToStayPage from './pages/PlacesToStayPage';
 import StaysInAreaPage from './pages/StaysInAreaPage';
@@ -23,6 +24,10 @@ function App() {
           <PlacesToStayPage/>
         </Route>
         <Route path="/hosting">
+
+        </Route>
+        <Route path="/login-host">
+          <LoginPage/>
         </Route>
 
         <Route path="/staysin/:search">
