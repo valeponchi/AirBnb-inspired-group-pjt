@@ -9,22 +9,12 @@ function SearchBar({ className }) {
 
   const history = useHistory();
 
-  const searchLocation = useStore(store => store.searchLocation);
-  const setSearchLocation = useStore(store => store.setSearchLocation);
-
-  const fetchApartmentsBySpecificLocation = useStore(
-    store => store.fetchApartmentsBySpecificLocation
-  );
-
   function onSubmit(e) {
     e.preventDefault();
-    history.push(`/staysin/${searchLocation}`);
+    history.push(`/staysin/${search}`);
     setSearch("");
   }
 
-  useEffect(() => {
-    fetchApartmentsBySpecificLocation(searchLocation);
-  }, [fetchApartmentsBySpecificLocation, searchLocation]);
   return (
     <form onSubmit={onSubmit} className={className}>
       <input
@@ -34,7 +24,6 @@ function SearchBar({ className }) {
         value={search}
         onChange={e => {
           setSearch(e.target.value);
-          setSearchLocation(e.target.value);
         }}
       />
     </form>
