@@ -1,8 +1,22 @@
 //include (get something from the same model)
 //select (connects models with relationship)
 //connect (on create/update if you have to connect a model to another)
-const nodeFetch = require("node-fetch");
+
 const { apartment, apartmentLocation } = require("../../utils/dbClient");
+
+const fetch = require('node-fetch')
+// import fetch from 'node-fetch'
+// const fetch = (...args) =>
+// 	import('node-fetch').then(({ default: fetch }) => fetch(...args))
+// https://geocode.xyz/${address}?json=1&auth=434249204703844806348x95363
+// api.postcodes.io/postcodes/RH194SA
+const address = 'RH19 4SA'
+const response = fetch(`https://api.postcodes.io/postcodes/${address}`)
+	.then(resp => resp.json())
+	.then(data => console.log(data.result.longitude))
+// console.log('address longitude: ', response.result.longitude)
+// const data = await response.json()
+// console.log(data)
 
 //CREATE ONE USER'S APARTMENT
 async function createOneApartment(req, res) {
