@@ -5,6 +5,7 @@ import HomePageCard from "../styled-components/HomePageCard";
 import Logo from "../components/Logo";
 import SearchBar from "../components/SearchBar";
 import BecomeAHost from "../components/BecomeAHost";
+import Footer from "../components/Footer";
 
 
 
@@ -68,9 +69,7 @@ function HomePage({className}){
    
             
         </main>
-        <footer>  
-           text
-        </footer>
+        <Footer/>
         </div>
     )
 }
