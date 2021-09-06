@@ -55,42 +55,69 @@ export default function StaysInAreaPage() {
   let { search } = useParams();
 
   const [apartments, setApartments] = useState([]);
-  const [whatever, setWhatever] = useState(false);
+  
 
   useEffect(() => {
     fetch(`http://localhost:4000/users/apartments/${search}`)
       .then(res => res.json())
       .then(data => setApartments(data));
-  }, [apartments.length, setWhatever, setApartments, search]);
-  debugger;
+  }, []);
 
-  // const center = [
-  //   apartments[0].location[0].latitude,
-  //   apartments[0].location[0].longitude,
-  // ];
+  
 
-  // console.log(center);
+  function toRender(){
+    if(apartments.length > 0 ){
+      return(
+        <MapContainer
+        className="map"
+        center={
+          apartments.length > 0
+            ? [
+                apartments[0].location[0].latitude,
+                apartments[0].location[0].longitude,
+              ]
+            : [0, 0]
+        }
+        zoom={13}
+        scrollWheelZoom={false}
+      >
+        <TileLayer
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
 
-  // const testFunction = () => {
-  //   if (apartments.length <= 0) {
-  //     return <h1>Loading content...</h1>;
-  //   } else {
-  //   }
-  // };
+        {apartments.map((apartment, index) => (
+          <Marker
+            key={index}
+            position={[
+              apartment.location[0].latitude,
+              apartment.location[0].longitude,
+            ]}
+          >
+            <Popup>
+              {apartment.postCode}
+              <br />
+              <img
+                src={apartment.imageUrl1}
+                alt={apartment.id}
+                height="100px"
+              />
+            </Popup>
+            <Tooltip>{apartment.description}</Tooltip>
+          </Marker>
+        ))}
+        <SetViewOnClick animateRef={animateRef} />
+      </MapContainer>
 
-  // let apartmentsBySpecificLocation = useStore(
-  //   store => store.apartmentsBySpecificLocation
-  // );
-  // const fetchApartmentsBySpecificLocation = useStore(
-  //   store => store.fetchApartmentsBySpecificLocation
-  // );
+      )
+    }
+    else{
+      return(
+        <h4>No Apartments in set area</h4>
+      )
+    }
+  }
 
-  // useEffect(() => {
-  //   fetchApartmentsBySpecificLocation(search);
-  //   if (apartmentsBySpecificLocation.length > 0) {
-  //     console.log(apartmentsBySpecificLocation);
-  //   }
-  // }, [apartmentsBySpecificLocation]);
 
   return (
     <>
@@ -99,47 +126,8 @@ export default function StaysInAreaPage() {
         <div className="cards">
           <StaysInAreaCards />
         </div>
-
-        <MapContainer
-          className="map"
-          center={
-            apartments.length > 0
-              ? [
-                  apartments[0].location[0].latitude,
-                  apartments[0].location[0].longitude,
-                ]
-              : [0, 0]
-          }
-          zoom={13}
-          scrollWheelZoom={false}
-        >
-          <TileLayer
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-
-          {apartments.map((apartment, index) => (
-            <Marker
-              key={index}
-              position={[
-                apartment.location[0].latitude,
-                apartment.location[0].longitude,
-              ]}
-            >
-              <Popup>
-                {apartment.postCode}
-                <br />
-                <img
-                  src={apartment.imageUrl1}
-                  alt={apartment.id}
-                  height="100px"
-                />
-              </Popup>
-              <Tooltip>{apartment.description}</Tooltip>
-            </Marker>
-          ))}
-          <SetViewOnClick animateRef={animateRef} />
-        </MapContainer>
+        {toRender()}
+       
       </PageBodyContainer>
     </>
   );
