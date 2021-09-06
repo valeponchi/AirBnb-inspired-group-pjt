@@ -1,45 +1,58 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useState } from "react";
-import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom";
+import useStore from "../store";
 
-function SearchBar({className}){
-    const [search, setSearch] = useState("")
+function SearchBar({ className }) {
+  const [search, setSearch] = useState("");
 
-    const history = useHistory()
+  const history = useHistory();
 
-    function onSubmit(e) {
-        e.preventDefault()
-        history.push(`/staysin/${search}`)
-        setSearch("")
-    }
-    return(
+  const searchLocation = useStore(store => store.searchLocation);
+  const setSearchLocation = useStore(store => store.setSearchLocation);
 
-        <form onSubmit={onSubmit} className={className}>
-        <input type="text" className="searchBar" placeholder="Where you going?" value={search} onChange={e => setSearch(e.target.value)} />
+  const fetchApartmentsBySpecificLocation = useStore(
+    store => store.fetchApartmentsBySpecificLocation
+  );
+
+  function onSubmit(e) {
+    e.preventDefault();
+    history.push(`/staysin/${searchLocation}`);
+    setSearch("");
+  }
+
+  useEffect(() => {
+    fetchApartmentsBySpecificLocation(searchLocation);
+  }, [fetchApartmentsBySpecificLocation, searchLocation]);
+  return (
+    <form onSubmit={onSubmit} className={className}>
+      <input
+        type="text"
+        className="searchBar"
+        placeholder="Where you going?"
+        value={search}
+        onChange={e => {
+          setSearch(e.target.value);
+          setSearchLocation(e.target.value);
+        }}
+      />
     </form>
-
-
-    )
+  );
 }
 
 export default styled(SearchBar)`
+  align-self: start;
 
-align-self: start;
-
-.searchBar{
+  .searchBar {
     background-color: white;
     width: 500px;
     padding: 10px;
     border: none;
     border-radius: 20px;
+  }
 
-}
-
-
-input{
+  input {
     margin-right: 50px;
-}
-
-
-`
+  }
+`;
