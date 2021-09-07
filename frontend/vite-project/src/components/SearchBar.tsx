@@ -41,7 +41,5 @@ export default styled(SearchBar)`
     border-radius: 20px;
   }
 
-  input {
-    margin-right: 50px;
-  }
+  
 `;

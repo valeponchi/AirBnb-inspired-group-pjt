@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage";
 
 import PlacesToStayPage from "./pages/PlacesToStayPage";
 import StaysInAreaPage from "./pages/StaysInAreaPage";
+import HostDashBoardPage from "./pages/HostDashBoardPage";
 
 function App() {
   return (
@@ -20,12 +21,20 @@ function App() {
         <Route path="/placestostay">
           <PlacesToStayPage />
         </Route>
-        <Route path="/hosting"></Route>
+        <Route path="/hosting">
+
+        </Route>
+        <Route path="/addhostproperty">
+
+        </Route>
         <Route path="/login-host">
           <LoginPage />
         </Route>
         <Route path="/staysin/:search">
           <StaysInAreaPage />
+        </Route>
+        <Route path="/dashboard">
+          <HostDashBoardPage/>
         </Route>
       </Switch>
     </div>
