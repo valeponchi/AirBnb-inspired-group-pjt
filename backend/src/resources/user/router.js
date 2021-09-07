@@ -1,39 +1,43 @@
-const userRouter = require("express").Router();
+const userRouter = require('express').Router()
 
 const {
-  createOneUser,
-  getOneUser,
-  getAllUsers,
-  getOneUserPlusInfo,
-  getAllApartments,
-  // updateOneUser,
-} = require("./controller");
-const {
-  createOneApartment,
-  getApartmentsByCity,
-  // updateOneApartment
-} = require("../apartment/controller");
+	createOneUser,
+	getOneUser,
+	getAllUsers,
+	getOneUserPlusInfo,
+	getAllApartments,
+	// updateOneUser,
+} = require('./controller')
 
-//USER
-userRouter.post("/", createOneUser);
-userRouter.get("/:id", getOneUser);
-userRouter.get("/:id/info", getOneUserPlusInfo);
+const {
+	createOneApartment,
+	getApartmentsByCity,
+	deleteOneApartment,
+	// updateOneApartment
+} = require('../apartment/controller')
+
+//GENERAL USER FUNCTIONS
+userRouter.post('/', createOneUser)
+userRouter.get('/:id', getOneUser)
+userRouter.get('/:id/info', getOneUserPlusInfo)
+userRouter.get('/', getAllUsers)
 // userRouter.patch('/:id', updateOneUser)
 
-//USERS
-userRouter.get("/", getAllUsers);
+//FROM A HOST POINT OF VIEW
+//CREATE ONE APARTMENT
+userRouter.post('/:id/apartments', createOneApartment)
+//GET ALL YOUR APARTMENTS
+userRouter.get('/:id/apartments', getAllApartments)
+//DELETE ONE OF YOUR APARTMENTS
+userRouter.delete('/:id/apartments/:apartId', deleteOneApartment)
 
-//CREATE ONE USER'S APARTMENT
-userRouter.post("/:id/apartments", createOneApartment);
+//UPDATE ONE OF YOUR APARTMENTS
 // userRouter.patch('/:id/apartments/:id', updateOneApartment)
-
-//GET ONE USER'S APARTMENT
-userRouter.get("/:id/apartments", getAllApartments);
+//GET ONE OF YOUR APARTMENTS
 // userRouter.get('/:id/apartments/:id', getOneApartment)
 
-//GET ALL USER'S APARTMENTS
-
+//GENERAL
 //GET ALL APARTMENTS BY CITY
-userRouter.get("/apartments/:city", getApartmentsByCity);
+userRouter.get('/apartments/:city', getApartmentsByCity)
 
-module.exports = userRouter;
+module.exports = userRouter

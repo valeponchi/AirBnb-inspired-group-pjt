@@ -91,6 +91,7 @@ const getAllApartments = async (req, res) => {
 					imageUrl2: true,
 					imageUrl3: true,
 					extra: true,
+					location: true,
 				},
 			},
 		},
