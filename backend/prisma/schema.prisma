@@ -66,7 +66,7 @@ model Apartment {
   id                    Int                 @id @default(autoincrement())
   latitude              Float
   longitude             Float
-  apartment             Apartment           @relation(fields: [apartmentId], references: [id])
+  apartment             Apartment           @relation(fields: [apartmentId], references: [id], onDelete: Cascade)
   apartmentId           Int                 
  }
 
@@ -81,7 +81,7 @@ model Apartment {
   garden                Boolean?
   pool                  Boolean?
   gym                   Boolean?
-  apartment             Apartment          @relation(fields: [apartmentId], references: [id])
+  apartment             Apartment          @relation(fields: [apartmentId], references: [id], onDelete: Cascade)
   apartmentId           Int                
  }
 
