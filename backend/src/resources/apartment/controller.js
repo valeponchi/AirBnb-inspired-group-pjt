@@ -210,6 +210,7 @@ const deleteOneApartment = async (req, res) => {
 		const apartId = parseInt(req.params.apartId)
 		const deletedApartment = await apartment.delete({
 			where: { id: apartId },
+			include: { extra: true, location: true },
 		})
 		res.json({ deletedApartment })
 	} catch (error) {
