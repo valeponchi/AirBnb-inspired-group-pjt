@@ -24,6 +24,9 @@ export default styled(Footer)`
 
 display: grid;
 place-content: center;
+width: 80%;
+margin-left: auto;
+margin-right: auto;
 
 
 div{

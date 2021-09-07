@@ -31,6 +31,7 @@ width: 80%;
 margin-left: auto;
 margin-right: auto;
 place-items: center;
+grid-gap: 20px;
 }
 
 .search{
