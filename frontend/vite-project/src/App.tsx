@@ -5,9 +5,13 @@ import HomePage from './pages/HomePage'
 
 import PlacesToStayPage from "./pages/PlacesToStayPage";
 import StaysInAreaPage from "./pages/StaysInAreaPage";
+
+import OneApartment from "./pages/OneApartment";
+
 import HostDashBoardPage from "./pages/HostDashBoardPage";
 
 import LoginPage, { UserCredentials } from './pages/LoginPage'
+
 
 function App() {
 
@@ -36,12 +40,18 @@ function App() {
         <Route path="/staysin/:search">
           <StaysInAreaPage />
         </Route>
+
+        <Route path="/apartment/:apartmentId">
+          <OneApartment />
+        </Route>
+
         <Route path="/dashboard">
          <HostDashBoardPage/>
         </Route>
         {/* <Route path="/:accomidationname">
           <h1>Hello world</h1>
         </Route> */}
+
       </Switch>
     </div>
   );

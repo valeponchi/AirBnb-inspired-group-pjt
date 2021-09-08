@@ -1,3 +1,4 @@
+
 import React, { SyntheticEvent, useState } from 'react'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
@@ -102,3 +103,4 @@ export default styled(LoginPage)`
 		padding: 10px;
 	}
 `
+
