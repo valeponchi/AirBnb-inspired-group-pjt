@@ -139,7 +139,7 @@ export default function StaysInAreaPage() {
                   src={apartment.imageUrl1}
                   alt={apartment.id}
                   height="100px"
-                  width="auto"
+                  width="100%"
                 />
                 <br />${apartment.priceNight}
                 <br />
