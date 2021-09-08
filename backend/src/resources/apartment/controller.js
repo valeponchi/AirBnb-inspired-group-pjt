@@ -6,21 +6,6 @@ const { apartment, apartmentLocation } = require('../../utils/dbClient')
 
 const fetch = require('node-fetch')
 
-// const address = 'RH19 4SA'
-// const response = fetch(`https://api.postcodes.io/postcodes/${address}`)
-// 	.then(resp => resp.json())
-// 	.then(data =>
-// 		console.log(
-// 			`longitude: ${data.result.longitude}, latitude: ${data.result.latitude}`
-// 		)
-// 	)
-
-// const address = 'RH19 4SA'
-// const response = fetch(`https://api.postcodes.io/postcodes/${address}`)
-// console.log('address longitude: ', response.result.longitude)
-// const data = await response.json()
-// console.log(data)
-
 //CREATE ONE USER'S APARTMENT
 async function createOneApartment(req, res) {
 	const userOwnerId = req.params.id
@@ -49,8 +34,6 @@ async function createOneApartment(req, res) {
 
 	const address = postCode
 	//VERSION 1
-	// ❌📌🚨🛠❗❗❗ error is these 2 var are not detected inside the .then
-
 	fetch(`https://api.postcodes.io/postcodes/${address}`)
 		.then(resp => resp.json())
 		.then(data => {
@@ -107,66 +90,6 @@ async function createOneApartment(req, res) {
 				})
 				.then(createdApartment => res.json({ data: createdApartment }))
 		})
-
-	// data.result = result,
-
-	// longitudeFetched = result.longitude
-	// latitudeFetched = result.latitude
-
-	//VERSION 2
-	// ❌📌🚨🛠❗❗❗ error is response.json() not a function
-	// const response = fetch(`https://api.postcodes.io/postcodes/${address}`)
-	// const data = await response.json()
-	// console.log(data)
-	// console.log('address longitude: ', data.result.longitude)
-	// console.log('address latitude: ', data.result.latitude)
-
-	// const longitude = data.result.longitude
-	// const latitude = data.result.latitude
-
-	// const newApartment = {
-	// 	priceNight,
-	// 	bedrooms,
-	// 	maxPeopleIn,
-	// 	description,
-	// 	city,
-	// 	postCode,
-	// 	road,
-	// 	imageUrl1,
-	// 	imageUrl2,
-	// 	imageUrl3,
-	// 	extra: {
-	// 		create: {
-	// 			wifi,
-	// 			smartTV,
-	// 			microwave,
-	// 			coffeeMaker,
-	// 			hotTub,
-	// 			parkingSpace,
-	// 			garden,
-	// 			pool,
-	// 			gym,
-	// 		},
-	// 	},
-	// 	location: {
-	// 		create: {
-	// 			latitude: lati,
-	// 			longitude: longi,
-	// 		},
-	// 	},
-	// }
-
-	// const createdApartment = await apartment.create({
-	// 	data: {
-	// 		...newApartment,
-	// 		userOwner: {
-	// 			connect: {
-	// 				id: parseInt(userOwnerId),
-	// 			},
-	// 		},
-	// 	},
-	// })
-	// res.json({ data: createdApartment })
 }
 
 //GET ONE USER'S APARTMENT

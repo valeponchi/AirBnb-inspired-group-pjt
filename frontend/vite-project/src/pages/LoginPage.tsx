@@ -1,4 +1,5 @@
 import React, { SyntheticEvent, useState } from 'react'
+import { useHistory } from 'react-router'
 import styled from 'styled-components'
 import Header from '../components/Header'
 
@@ -13,11 +14,13 @@ export type UserCredentials = {
 }
 
 type LoginProps = {
-	handleSubmit: (formData: { password: string; email: string }) => void
+	className: string
 }
 
-function LoginPage({ className, handleSubmit }: LoginProps) {
+function LoginPage({ className }: LoginProps) {
+	const history = useHistory()
 	const [loginForm, setLoginForm] = useState<UserCredentials>(initialForm)
+	const [loggedUser, setLoggedUser] = useState<User | null>(null)
 
 	function handleChange(e: SyntheticEvent) {
 		const { name, value } = e.target as HTMLInputElement
@@ -25,9 +28,29 @@ function LoginPage({ className, handleSubmit }: LoginProps) {
 		setLoginForm({ ...loginForm, [name]: value })
 	}
 
+	function handleSubmit(loginForm: UserCredentials) {
+		fetch('http://localhost:4000/login', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			credentials: 'include',
+			body: JSON.stringify(loginForm),
+		})
+			.then(resp => resp.json())
+			.then(
+				user => {
+					setLoggedUser(user)
+					history.push('/')
+				}
+				//store currentUser data in state and send the currenUser somewhere
+				//use.history
+			)
+	}
+
 	return (
 		<div className={className}>
-			<Header />
+			<Header className={className} />
 			<main>
 				<form
 					className="loginForm container"
@@ -35,11 +58,19 @@ function LoginPage({ className, handleSubmit }: LoginProps) {
 						e.preventDefault()
 						handleSubmit(loginForm)
 					}}>
-					<input onChange={handleChange} type="email" placeholder="Email" />
+					<input
+						onChange={handleChange}
+						type="email"
+						placeholder="Email"
+						name="email"
+						value={loginForm.email}
+					/>
 					<input
 						onChange={handleChange}
 						type="password"
 						placeholder="Password"
+						name="password"
+						value={loginForm.password}
 					/>
 					<button>Login</button>
 					{/* <input type="submit" value="Login" /> */}

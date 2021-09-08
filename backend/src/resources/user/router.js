@@ -6,6 +6,7 @@ const {
 	getAllUsers,
 	getOneUserPlusInfo,
 	getAllApartments,
+	getOneUserApartment,
 	// updateOneUser,
 } = require('./controller')
 
@@ -16,6 +17,10 @@ const {
 	// updateOneApartment
 } = require('../apartment/controller')
 
+//GENERAL
+//GET ALL APARTMENTS BY CITY
+userRouter.get('/apartments/:city', getApartmentsByCity)
+
 //GENERAL USER FUNCTIONS
 userRouter.post('/', createOneUser)
 userRouter.get('/:id', getOneUser)
@@ -23,11 +28,13 @@ userRouter.get('/:id/info', getOneUserPlusInfo)
 userRouter.get('/', getAllUsers)
 // userRouter.patch('/:id', updateOneUser)
 
-//FROM A HOST POINT OF VIEW
+//*****AS A HOST************/
 //CREATE ONE APARTMENT
 userRouter.post('/:id/apartments', createOneApartment)
 //GET ALL YOUR APARTMENTS
 userRouter.get('/:id/apartments', getAllApartments)
+//GET ONE OF YOUR APARTMENTS
+userRouter.get('/:id/apartments/:apartId', getOneUserApartment)
 //DELETE ONE OF YOUR APARTMENTS
 userRouter.delete('/:id/apartments/:apartId', deleteOneApartment)
 
@@ -35,9 +42,5 @@ userRouter.delete('/:id/apartments/:apartId', deleteOneApartment)
 // userRouter.patch('/:id/apartments/:id', updateOneApartment)
 //GET ONE OF YOUR APARTMENTS
 // userRouter.get('/:id/apartments/:id', getOneApartment)
-
-//GENERAL
-//GET ALL APARTMENTS BY CITY
-userRouter.get('/apartments/:city', getApartmentsByCity)
 
 module.exports = userRouter

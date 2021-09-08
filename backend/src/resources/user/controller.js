@@ -46,7 +46,7 @@ const getAllUsers = async (req, res) => {
 
 // //GET ONE USER
 const getOneUser = async (req, res) => {
-	const { id } = req.params
+	const { id } = req.currentUser
 
 	const oneUser = await user.findUnique({
 		where: { id: parseInt(id) },
@@ -69,8 +69,9 @@ const getOneUserPlusInfo = async (req, res) => {
 	res.json({ data: oneUser })
 }
 
+// GET ALL APARTMENTS OF A USER
 const getAllApartments = async (req, res) => {
-	const { id } = req.params
+	const { id } = req.currentUser
 	const relatedApartments = await user.findMany({
 		where: {
 			id: parseInt(id),
@@ -97,6 +98,40 @@ const getAllApartments = async (req, res) => {
 		},
 	})
 	res.json({ data: relatedApartments })
+}
+
+const getOneUserApartment = async (req, res) => {
+	try {
+		const { id } = req.currentUser
+		const { apartId } = req.params
+		const apartmentRequested = await user.findMany({
+			where: {
+				id: parseInt(id),
+			},
+			include: {
+				apartmentOwned: {
+					where: { id: parseInt(apartId) },
+					select: {
+						priceNight: true,
+						bedrooms: true,
+						maxPeopleIn: true,
+						description: true,
+
+						city: true,
+						postCode: true,
+						road: true,
+
+						imageUrl1: true,
+						imageUrl2: true,
+						imageUrl3: true,
+						extra: true,
+						location: true,
+					},
+				},
+			},
+		})
+		res.json({ data: apartmentRequested })
+	} catch (error) {}
 }
 
 // const updateOneUser = async (req, res) => {
@@ -147,6 +182,7 @@ module.exports = {
 	getOneUser,
 	getAllUsers,
 	getOneUserPlusInfo,
+	getOneUserApartment,
 	// updateOneUser,
 	// updateOneApartment
 }
