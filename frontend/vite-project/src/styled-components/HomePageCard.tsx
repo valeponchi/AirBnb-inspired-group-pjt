@@ -11,7 +11,7 @@ function HomePageCard({className, GetAway}){
     
 
     const history = useHistory()
-    console.log(GetAway)
+  
     return(
      <li className={className}>
             

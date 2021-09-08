@@ -19,7 +19,13 @@ function HostDashBoardPage({className}){
     //Fetch with user id
 
     useEffect(() => {
-        fetch(`http://localhost:4000/users/${currentUserId}/apartments`).then(resp => resp.json()).then(data => setHostedProperties([data]))
+        fetch(`http://localhost:4000/users/${currentUserId}/apartments`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+        }).then(resp => resp.json()).then(data => setHostedProperties([data]))
     },[])
    
     function loadingContent(){

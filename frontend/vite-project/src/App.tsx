@@ -39,9 +39,9 @@ function App() {
         <Route path="/dashboard">
          <HostDashBoardPage/>
         </Route>
-        <Route path="/:accomidationname">
+        {/* <Route path="/:accomidationname">
           <h1>Hello world</h1>
-        </Route>
+        </Route> */}
       </Switch>
     </div>
   );
