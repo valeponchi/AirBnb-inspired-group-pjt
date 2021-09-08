@@ -15,6 +15,8 @@ const loginUser = async (req, res) => {
 			email: (await loggedUser).email,
 		})
 
+		//creating the cookie here:
+		//credential: include in the frontend
 		res.cookie('token', token, { httpOnly: true })
 
 		res.json({
@@ -29,7 +31,7 @@ const loginUser = async (req, res) => {
 
 const logOutUser = async (req, res) => {
 	res.clearCookie('token')
-	res.json({ msg: "You've been succesfully logged out", data: null })
+	res.json({ msg: "You've been successfully logged out", data: null })
 }
 
 const validateLoggedInToken = async (req, res) => {

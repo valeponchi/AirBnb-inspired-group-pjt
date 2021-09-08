@@ -1,15 +1,17 @@
-import React, { useState } from "react";
-import "./styleSheets/App.css";
-import { Switch, Route, Redirect } from "react-router";
-import HomePage from "./pages/HomePage";
-import LoginPage from "./pages/LoginPage";
+import React, { useEffect, useState } from 'react'
+import './styleSheets/App.css'
+import { Switch, Route, Redirect, useHistory } from 'react-router'
+import HomePage from './pages/HomePage'
 
 import PlacesToStayPage from "./pages/PlacesToStayPage";
 import StaysInAreaPage from "./pages/StaysInAreaPage";
 import HostDashBoardPage from "./pages/HostDashBoardPage";
 
+import LoginPage, { UserCredentials } from './pages/LoginPage'
+
 function App() {
-  return (
+
+	return (
     <div className="App ">
       <Switch>
         <Route path="/" exact>
@@ -41,4 +43,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
