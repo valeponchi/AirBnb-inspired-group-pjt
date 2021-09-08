@@ -6,12 +6,21 @@ import Logo from "../components/Logo";
 import SearchBar from "../components/SearchBar";
 import BecomeAHost from "../components/BecomeAHost";
 import Footer from "../components/Footer";
+import { useState } from "react";
 
 
 
 function HomePage({className}){
 
 
+    const getAways = [ {
+        name: "London",
+        url: "https://image.freepik.com/free-photo/beautiful-shot-tower-bridge-london-uk_181624-41859.jpg"
+    }, 
+    { 
+        name: 'Wembley',
+        url: "https://images.unsplash.com/photo-1623793478409-50c0c0478d26?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1334&q=80"
+ }]
     const history = useHistory()
 
 
@@ -46,11 +55,12 @@ function HomePage({className}){
         <section className="liveAnywhereSection">
          <h3>Live anywhere</h3>
          <ul>
-             {/* Need to fetch from server for diffrent cities card */}
-           <HomePageCard/>
-           <HomePageCard/>
-           <HomePageCard/>
-           <HomePageCard/>
+             {getAways.map(item => {
+                 return(
+                     <HomePageCard GetAway={item} />
+                 )
+             })}
+        
          </ul>
         </section>
 

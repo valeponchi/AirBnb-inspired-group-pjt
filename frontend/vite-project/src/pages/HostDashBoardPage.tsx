@@ -6,9 +6,45 @@ import {BsPlusCircle} from "react-icons/bs"
 import {BiUpArrowAlt, BiCalendar} from "react-icons/bi"
 import PropertyCardImage from "../components/PropertyCardImage";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 
 function HostDashBoardPage({className}){
+
+
+    // Get current user ID
+    const [currentUserId, setCurrentUserId] = useState(1);
+    const [hostedProperties, setHostedProperties] = useState([]);
+    let amountOfProperties = 0
+    //Fetch with user id
+
+    useEffect(() => {
+        fetch(`http://localhost:4000/users/${currentUserId}/apartments`).then(resp => resp.json()).then(data => setHostedProperties([data]))
+    },[])
+   
+    function loadingContent(){
+        if(hostedProperties.length === 1 ){
+            const limitAparments = hostedProperties[0].data[0].apartmentOwned.slice(0, 4)
+            amountOfProperties = limitAparments.length
+
+            return(
+                <>
+                {limitAparments.map(apartment => {
+                    return(
+                        <PropertyCardImage Apartment={apartment}  key={limitAparments.postCode}/>
+                    )
+                })}
+                
+                </>
+            )
+        }
+        else{
+            return(
+                <h1>Loading Properties</h1>
+            )
+        }
+    }
+
 
 
     return(
@@ -39,11 +75,13 @@ function HostDashBoardPage({className}){
                 <section className="reviewHostedProperty" id="ReviewHostedProperty">
                     <h3>Review Hosted Properties</h3>
                     <div className="pictureCardContainer">
-                       
-                    <PropertyCardImage/>
-                    <PropertyCardImage/>
-                    <PropertyCardImage/>
-                    <PropertyCardImage/>
+                      
+                    {loadingContent()}
+                    
+                   
+                             
+                   
+                    
                     </div>
                
              
@@ -62,7 +100,7 @@ function HostDashBoardPage({className}){
                         
                     </div>
                     <div className="bookingCard">
-                     <p>4 Properties Hosted</p>
+                     <p>{amountOfProperties} Properties Hosted</p>
                     </div>
                     </div>
 

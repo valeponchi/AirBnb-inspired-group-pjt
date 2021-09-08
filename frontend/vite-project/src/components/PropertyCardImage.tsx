@@ -2,11 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-function PropertyCardImage({className}){
+function PropertyCardImage({className, Apartment}){
+   
+    const accomidationname = Apartment.postCode
+   
     return(
-        <Link to="#" className={className}>
+        <Link to={`${accomidationname}`} className={className}>
         <div className="pictureCard">
-        <img src="src/assets/images/logo.png"/> 
+        <img src={Apartment.imageUrl1}/> 
     </div></Link>
     )
 }
@@ -21,9 +24,9 @@ export default styled(PropertyCardImage)`
 }
 
 img{
-    overflow: fill;
+    border-radius: 20px;
     width: 100%;
-    height: 100%:
+    height: 100%;
 }
 
 
