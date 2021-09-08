@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage";
 
 import PlacesToStayPage from "./pages/PlacesToStayPage";
 import StaysInAreaPage from "./pages/StaysInAreaPage";
+import OneApartment from "./pages/OneApartment";
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
         </Route>
         <Route path="/staysin/:search">
           <StaysInAreaPage />
+        </Route>
+        <Route path="/apartment/:apartmentId">
+          <OneApartment />
         </Route>
       </Switch>
     </div>
