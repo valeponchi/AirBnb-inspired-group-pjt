@@ -18,32 +18,16 @@ export type Apartment = {
   location: [Location];
 };
 
-type Location = {
-  id: number;
-  latitude: number;
-  longitude: number;
-  apartmentId: number;
-};
-
 type StoreType = {
-  apartmentsBySpecificLocation: {}[];
-  fetchApartmentsBySpecificLocation: (param1: string) => void;
+  loggedUser: null | string;
+  setLoggedUser: (param1: string) => void;
 };
 
 const useStore = create<StoreType>((set, get) => ({
-  apartmentsBySpecificLocation: [],
-  fetchApartmentsBySpecificLocation: search => {
-    fetch(`http://localhost:4000/users/apartments/${search}`)
-      .then(res => res.json())
-      .then(data => {
-        set({ apartmentsBySpecificLocation: data });
-      });
+  loggedUser: null,
+  setLoggedUser: user => {
+    set({ loggedUser: user });
   },
-
-  // search: "",
-  // setSearch: location => {
-  //   set({ search: location });
-  // },
 }));
 
 export default useStore;

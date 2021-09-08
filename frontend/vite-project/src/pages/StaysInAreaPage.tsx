@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import styled from "styled-components";
 import Header from "../components/Header";
@@ -89,6 +89,13 @@ export default function StaysInAreaPage() {
 
   const [apartments, setApartments] = useState([]);
   // console.log(apartments);
+
+  const loggedUser = useStore(state => state.loggedUser);
+  const history = useHistory();
+
+  useEffect(() => {
+    if (!loggedUser) history.push("/login-host");
+  }, [loggedUser]);
 
   useEffect(() => {
     fetch(`http://localhost:4000/users/apartments/${search}`, {
