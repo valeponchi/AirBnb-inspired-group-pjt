@@ -29,6 +29,7 @@ function App() {
         <Route path="/addhostproperty">
 
         </Route>
+        {/* <Route path="/:acc"></Route>  This is causing a bug*/} 
         <Route path="/login-host">
           <LoginPage />
         </Route>
@@ -36,7 +37,10 @@ function App() {
           <StaysInAreaPage />
         </Route>
         <Route path="/dashboard">
-          <HostDashBoardPage/>
+         <HostDashBoardPage/>
+        </Route>
+        <Route path="/:accomidationname">
+          <h1>Hello world</h1>
         </Route>
       </Switch>
     </div>

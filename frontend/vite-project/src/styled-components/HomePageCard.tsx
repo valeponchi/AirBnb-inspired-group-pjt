@@ -2,20 +2,26 @@ import React from "react";
 
 import styled  from "styled-components";
 import {useHistory} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 // For the on click to work properly make sure you add the city name to the alt of the image
 
-function HomePageCard({className}){
+function HomePageCard({className, GetAway}){
+
+    
 
     const history = useHistory()
+    console.log(GetAway)
     return(
-        <li className={className}>
-        <img src="../src/assets/images/homepageimage.jpeg" alt="Durham" onClick={(e) => {
-            const search = e.target.alt
+     <li className={className}>
+            
+        <img src={GetAway.url} alt="Durham" onClick={(e) => {
+            const search = GetAway.name
             
             history.push(`/staysin/${search}`)}} className="pointer" />
-        <h3>Getaways</h3>
+        <h3>{GetAway.name}</h3>
     </li>
+    
   
     )
 }
