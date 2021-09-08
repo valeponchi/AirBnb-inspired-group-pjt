@@ -88,11 +88,22 @@ export default function StaysInAreaPage() {
   let { search } = useParams();
 
   const [apartments, setApartments] = useState([]);
+  // console.log(apartments);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/users/apartments/${search}`)
+    fetch(`http://localhost:4000/users/apartments/${search}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    })
       .then(res => res.json())
-      .then(data => setApartments(data));
+      .then(data => {
+        console.log(data);
+
+        setApartments(data);
+      });
   }, []);
 
   function toRender() {
