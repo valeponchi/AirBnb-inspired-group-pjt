@@ -1,4 +1,4 @@
-//this is if we will implement the guest profile.
+//this is if we will implement the guest profile. LALALA
 module.exports = (req, res, next) => {
 	const { role } = req.currentUser
 	if (role === 'host') {

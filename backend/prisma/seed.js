@@ -1,4 +1,5 @@
 const { PrismaClient } = require('@prisma/client')
+const { createdWithHash } = require('../src/resources/auth/services')
 
 const dbClient = new PrismaClient()
 
@@ -320,9 +321,7 @@ async function seed() {
 	//THE ORDER THEY ARE MATTERS !!
 	//USER
 	for (const user of users) {
-		const theUser = await dbClient.user.create({
-			data: user,
-		})
+		const theUser = await createdWithHash(user)
 		console.log({ theUser })
 	}
 
