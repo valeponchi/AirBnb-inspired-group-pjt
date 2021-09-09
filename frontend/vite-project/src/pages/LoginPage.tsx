@@ -46,6 +46,7 @@ function LoginPage({ className }: LoginProps) {
 			.then(
 				user => {
 					setLoggedUser(user)
+					console.log(user)
 					history.push(`/dashboard/${user.id}`)
 				}
 				//store currentUser data in state and send the currenUser somewhere

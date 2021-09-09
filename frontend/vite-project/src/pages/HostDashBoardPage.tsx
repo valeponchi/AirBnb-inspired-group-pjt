@@ -7,54 +7,8 @@ import { BiUpArrowAlt, BiCalendar } from "react-icons/bi";
 import PropertyCardImage from "../components/PropertyCardImage";
 import { Link, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
-<<<<<<< HEAD
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router";
 
-
-function HostDashBoardPage({className}){
-
-
-    // Get current user ID
-    const [currentUserId, setCurrentUserId] = useState(1);
-    const [hostedProperties, setHostedProperties] = useState([]);
-    let amountOfProperties = 0
-
-    const params = useParams()
-    console.log(params);
-    //Fetch with user id
-
-    useEffect(() => {
-        fetch(`http://localhost:4000/users/${currentUserId}/apartments`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            credentials: 'include',
-        }).then(resp => resp.json()).then(data => setHostedProperties([data]))
-    },[])
-   
-    function loadingContent(){
-        if(hostedProperties.length === 1 ){
-            const limitAparments = hostedProperties[0].data[0].apartmentOwned.slice(0, 4)
-            amountOfProperties = limitAparments.length
-
-            return(
-                <>
-                {limitAparments.map(apartment => {
-                    return(
-                        <PropertyCardImage Apartment={apartment}  key={limitAparments.postCode}/>
-                    )
-                })}
-                
-                </>
-            )
-        }
-        else{
-            return(
-                <h1>Loading Properties</h1>
-            )
-        }
-=======
 import useStore from "../store";
 
 function HostDashBoardPage({ className }) {
@@ -64,14 +18,12 @@ function HostDashBoardPage({ className }) {
   let amountOfProperties = 0;
   //Fetch with user id
 
-  //   const loggedUser = useStore(state => state.loggedUser);
-  //   const history = useHistory();
+  const params = useParams()
+  
 
-  //   useEffect(() => {
-  //     if (!loggedUser) history.push("/login-host");
-  //   }, [loggedUser]);
 
   useEffect(() => {
+    setCurrentUserId(params.id)
     fetch(`http://localhost:4000/users/${currentUserId}/apartments`, {
       method: "GET",
       headers: {
@@ -105,7 +57,7 @@ function HostDashBoardPage({ className }) {
       );
     } else {
       return <h1>Loading Properties</h1>;
->>>>>>> cfee3b5fd7ee545247ec3045965b9a0b1cc650cb
+
     }
   }
 
