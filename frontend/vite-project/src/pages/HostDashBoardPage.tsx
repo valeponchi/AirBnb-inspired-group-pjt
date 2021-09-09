@@ -7,6 +7,7 @@ import {BiUpArrowAlt, BiCalendar} from "react-icons/bi"
 import PropertyCardImage from "../components/PropertyCardImage";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import {useParams} from "react-router-dom";
 
 
 function HostDashBoardPage({className}){
@@ -16,6 +17,9 @@ function HostDashBoardPage({className}){
     const [currentUserId, setCurrentUserId] = useState(1);
     const [hostedProperties, setHostedProperties] = useState([]);
     let amountOfProperties = 0
+
+    const params = useParams()
+    console.log(params);
     //Fetch with user id
 
     useEffect(() => {
