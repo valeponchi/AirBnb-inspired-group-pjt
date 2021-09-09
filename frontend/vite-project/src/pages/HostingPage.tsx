@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import useStore from '../store'
-// import { FaBeer } from 'react-icons/fa';
 
 const initialForm = {
 	email: '',
@@ -53,16 +52,11 @@ function HostingPage({ className }: LoginProps) {
 			body: JSON.stringify({ ...becomeAHostForm, role: 'host' }),
 		})
 			.then(resp => resp.json())
-			.then(
-				user => {
-					setLoggedUser(user)
-					console.log(loggedUser)
-					history.push(`/dashboard/${user.id}`)
-				}
-
-				//store currentUser data in state and send the currenUser somewhere
-				//use.history
-			)
+			.then(user => {
+				setLoggedUser(user)
+				console.log(loggedUser)
+				history.push(`/dashboard/${user.id}`)
+			})
 		setbecomeAHostForm(initialForm)
 	}
 

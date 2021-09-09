@@ -9,7 +9,11 @@ import Footer from '../components/Footer'
 import { useState } from 'react'
 import useStore from '../store'
 
-function HomePage({ className }) {
+type LoginProps = {
+	className: string
+}
+
+function HomePage({ className }: LoginProps) {
 	const getAways = [
 		{
 			name: 'London',
@@ -56,7 +60,7 @@ function HomePage({ className }) {
 							onClick={() => {
 								history.push('/placestostay')
 							}}>
-							Im flexible
+							I'm flexible
 						</a>
 					</div>
 				</section>

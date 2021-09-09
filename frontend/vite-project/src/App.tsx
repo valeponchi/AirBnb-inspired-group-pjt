@@ -14,6 +14,10 @@ import LoginPage, { UserCredentials } from './pages/LoginPage'
 import HostingPage from './pages/HostingPage'
 import Footer from './components/Footer'
 
+// type LoginProps = {
+// 	className: string
+// }
+
 function App() {
 	return (
 		<div className="App ">
