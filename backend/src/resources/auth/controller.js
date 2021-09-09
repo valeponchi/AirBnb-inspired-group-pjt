@@ -22,6 +22,7 @@ const loginUser = async (req, res) => {
 		res.json({
 			data: {
 				email: loggedUser.email,
+				id: loggedUser.id,
 			},
 		})
 	} catch (error) {
