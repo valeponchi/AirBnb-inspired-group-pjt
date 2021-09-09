@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { SyntheticEvent, useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
 import Footer from '../components/Footer'
@@ -6,13 +6,66 @@ import Header from '../components/Header'
 import useStore from '../store'
 // import { FaBeer } from 'react-icons/fa';
 
-function HostingPage({ className }) {
+const initialForm = {
+	email: '',
+	password: '',
+	firstName: '',
+	lastName: '',
+	dateOfBirth: '',
+}
+
+export type UserCredentials = {
+	email: string
+	password: string
+	firstName: string
+	lastName: string
+	dateOfBirth: string
+}
+
+type LoginProps = {
+	className: string
+}
+
+function HostingPage({ className }: LoginProps) {
 	const loggedUser = useStore(state => state.loggedUser)
+	const setLoggedUser = useStore(store => store.setLoggedUser)
+
+	const [becomeAHostForm, setbecomeAHostForm] =
+		useState<UserCredentials>(initialForm)
+
 	const history = useHistory()
 
-	// useEffect(() => {
-	//   if (!loggedUser) history.push("/login-host");
-	// }, [loggedUser]);
+	var today = new Date()
+
+	function handleChange(e: SyntheticEvent) {
+		const { name, value } = e.target as HTMLInputElement
+
+		setbecomeAHostForm({ ...becomeAHostForm, [name]: value })
+	}
+
+	function handleSubmit(becomeAHostForm: UserCredentials) {
+		fetch('http://localhost:4000/users', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			credentials: 'include',
+			body: JSON.stringify({ ...becomeAHostForm, role: 'host' }),
+		})
+			.then(resp => resp.json())
+			.then(
+				user => {
+					setLoggedUser(user)
+					console.log(loggedUser)
+					history.push(`/dashboard/${user.id}`)
+				}
+
+				//store currentUser data in state and send the currenUser somewhere
+				//use.history
+			)
+		setbecomeAHostForm(initialForm)
+	}
+
 	return (
 		<>
 			<Header />
@@ -21,46 +74,56 @@ function HostingPage({ className }) {
 				<form
 					className="becomeAHost container"
 					// you have to send also role:host !!}
-					// onSubmit={e => {
-					// 	e.preventDefault()
-					// 	handleSubmit(loginForm)
-					// }}
-				>
+					onSubmit={e => {
+						e.preventDefault()
+						handleSubmit(becomeAHostForm)
+					}}>
 					<h2>Become a host</h2>
 					<input
-						// onChange={handleChange}
+						onChange={handleChange}
 						type="email"
 						placeholder="Email"
 						name="email"
-						// value={loginForm.email}
+						required
+						value={becomeAHostForm.email}
 					/>
 					<input
-						// onChange={handleChange}
+						onChange={handleChange}
 						type="password"
 						placeholder="Password"
 						name="password"
-						// value={loginForm.password}
+						required
+						min={10}
+						value={becomeAHostForm.password}
 					/>
 					<input
-						// onChange={handleChange}
+						onChange={handleChange}
 						type="text"
 						placeholder="firstName"
 						name="firstName"
-						// value={loginForm.password}
+						required
+						min={2}
+						max={15}
+						value={becomeAHostForm.firstName}
 					/>
 					<input
-						// onChange={handleChange}
+						onChange={handleChange}
 						type="text"
 						placeholder="lastName"
 						name="lastName"
-						// value={loginForm.password}
+						required
+						min={2}
+						max={15}
+						value={becomeAHostForm.lastName}
 					/>
 					<input
-						// onChange={handleChange}
+						onChange={handleChange}
 						type="date"
 						placeholder="dateOfBirth"
 						name="dateOfBirth"
-						// value={loginForm.password}
+						required
+						max={today}
+						value={becomeAHostForm.dateOfBirth}
 					/>
 					<button className="btnBecomeHost">Become a Host</button>
 					{/* <input type="submit" value="Login" /> */}
@@ -74,7 +137,6 @@ function HostingPage({ className }) {
 export default styled(HostingPage)`
 	h2 {
 		margin-top: 20px;
-		color: #ff5a5f;
 	}
 
 	display: grid;
@@ -99,5 +161,6 @@ export default styled(HostingPage)`
 
 	.btnBecomeHost:hover {
 		background-color: #ff5a6086;
+		color: white;
 	}
 `

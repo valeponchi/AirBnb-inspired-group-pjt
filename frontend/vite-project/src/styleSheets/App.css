@@ -19,3 +19,11 @@
 .becomeAHost h2 {
 	color: #ff5a5f;
 }
+
+.btnBecomeHost:hover {
+	color: white;
+}
+
+input {
+	outline: none;
+}
