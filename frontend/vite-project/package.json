@@ -1,33 +1,36 @@
 {
-  "name": "vite-project",
-  "version": "0.0.0",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "serve": "vite preview"
-  },
-  "dependencies": {
-    "@types/leaflet": "^1.7.5",
-    "leaflet": "^1.7.1",
-    "navigation": "^5.5.0",
-    "pagination": "^0.4.6",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
-    "react-icons": "^4.2.0",
-    "react-leaflet": "^3.2.1",
-    "react-router": "^5.2.1",
-    "react-router-dom": "^5.2.1",
-    "styled-components": "^5.3.1",
-    "swiper": "^7.0.3",
-    "zustand": "^3.5.10"
-  },
-  "devDependencies": {
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "@types/react-router-dom": "^5.1.8",
-    "@types/styled-components": "^5.1.13",
-    "@vitejs/plugin-react-refresh": "^1.3.1",
-    "typescript": "^4.3.2",
-    "vite": "^2.5.2"
-  }
+	"name": "vite-project",
+	"version": "0.0.0",
+	"tags": [
+		"swiper"
+	],
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc && vite build",
+		"serve": "vite preview"
+	},
+	"dependencies": {
+		"@types/leaflet": "^1.7.5",
+		"leaflet": "^1.7.1",
+		"navigation": "^5.5.0",
+		"pagination": "^0.4.6",
+		"react": "^17.0.0",
+		"react-dom": "^17.0.0",
+		"react-icons": "^4.2.0",
+		"react-leaflet": "^3.2.1",
+		"react-router": "^5.2.1",
+		"react-router-dom": "^5.2.1",
+		"styled-components": "^5.3.1",
+		"swiper": "^7.0.3",
+		"zustand": "^3.5.10"
+	},
+	"devDependencies": {
+		"@types/react": "^17.0.0",
+		"@types/react-dom": "^17.0.0",
+		"@types/react-router-dom": "^5.1.8",
+		"@types/styled-components": "^5.1.13",
+		"@vitejs/plugin-react-refresh": "^1.3.1",
+		"typescript": "^4.3.2",
+		"vite": "^2.5.2"
+	}
 }
