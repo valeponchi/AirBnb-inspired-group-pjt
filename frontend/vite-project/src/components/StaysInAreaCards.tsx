@@ -38,9 +38,12 @@ const CardContainer = styled.li`
   height: 250px; 
   width: auto;
 
-  
+  .mySwiper {
+    width:280px;
+  }
   
   .image {
+    width: 300px;
     display: grid;
     place-items: center;
 
@@ -105,57 +108,44 @@ export default function StaysInAreaCards({ apartments }) {
 			{apartments.map((apartment, index) => (
 				<CardContainer
 					key={index}
-					onClick={() => {
-						history.push(`/apartment/${apartment.id}`)
-					}}>
-					{/* <Swiper
-							onSwiper={setSwiperRef}
-							slidesPerView={1}
-							spaceBetween={0}
-							loop={true}
+					// onClick={() => {
+					// 	history.push(`/apartment/${apartment.id}`)
+					// }}
+				>
+					<div className="image">
+						<Swiper
 							pagination={{
-								clickable: true,
+								type: 'fraction',
 							}}
 							navigation={true}
-							className="mySwiper"> */}
-
-					<Swiper
-						pagination={{
-							type: 'fraction',
-						}}
-						navigation={true}
-						className="mySwiper">
-						<SwiperSlide>
-							<div className="image">
+							loop={true}
+							className="mySwiper">
+							<SwiperSlide>
 								<img
 									src={apartment.imageUrl1}
 									alt="yeet"
 									height="200px"
 									width="300px"
 								/>
-							</div>
-						</SwiperSlide>
-						{/* <SwiperSlide> */}
-						{/* <div className="image">
+							</SwiperSlide>
+							<SwiperSlide>
 								<img
 									src={apartment.imageUrl2}
 									alt="yeet"
 									height="200px"
 									width="300px"
 								/>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide>
-							<div className="image">
+							</SwiperSlide>
+							<SwiperSlide>
 								<img
 									src={apartment.imageUrl3}
 									alt="yeet"
 									height="200px"
 									width="300px"
 								/>
-							</div> */}
-						{/* </SwiperSlide> */}
-					</Swiper>
+							</SwiperSlide>
+						</Swiper>
+					</div>
 
 					<div className="data">
 						<div className="info">
