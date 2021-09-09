@@ -1,8 +1,8 @@
-
 import React, { SyntheticEvent, useState } from 'react'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
 import Header from '../components/Header'
+import useStore from '../store'
 
 const initialForm = {
 	email: '',
@@ -21,7 +21,11 @@ type LoginProps = {
 function LoginPage({ className }: LoginProps) {
 	const history = useHistory()
 	const [loginForm, setLoginForm] = useState<UserCredentials>(initialForm)
-	const [loggedUser, setLoggedUser] = useState<User | null>(null)
+
+	const loggedUser = useStore(store => store.loggedUser)
+	const setLoggedUser = useStore(store => store.setLoggedUser)
+	//   const [loggedUser, setLoggedUser] = useState<User | null>(null);
+	console.log(loggedUser)
 
 	function handleChange(e: SyntheticEvent) {
 		const { name, value } = e.target as HTMLInputElement
@@ -42,7 +46,7 @@ function LoginPage({ className }: LoginProps) {
 			.then(
 				user => {
 					setLoggedUser(user)
-					history.push('/')
+					history.push(`/dashboard/${user.id}`)
 				}
 				//store currentUser data in state and send the currenUser somewhere
 				//use.history
@@ -103,4 +107,3 @@ export default styled(LoginPage)`
 		padding: 10px;
 	}
 `
-

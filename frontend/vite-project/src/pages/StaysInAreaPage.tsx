@@ -1,23 +1,23 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from 'react'
 
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from 'react-router-dom'
 
-import styled from "styled-components";
-import Header from "../components/Header";
-import useStore, { Apartment } from "../store";
+import styled from 'styled-components'
+import Header from '../components/Header'
+import useStore, { Apartment } from '../store'
 
 import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-  Tooltip,
-  useMapEvent,
-} from "react-leaflet";
+	MapContainer,
+	TileLayer,
+	Marker,
+	Popup,
+	Tooltip,
+	useMapEvent,
+} from 'react-leaflet'
 
-import "leaflet/dist/leaflet.css";
-import StaysInAreaCards from "../components/StaysInAreaCards";
-import Footer from "../components/Footer";
+import 'leaflet/dist/leaflet.css'
+import StaysInAreaCards from '../components/StaysInAreaCards'
+import Footer from '../components/Footer'
 
 const PageBodyContainer = styled.div`
   display: grid;
@@ -67,110 +67,115 @@ const PageBodyContainer = styled.div`
       width: 100vw;
     }
   }
-`;
+`
 
 // animated panning
 function SetViewOnClick({ animateRef }) {
-  const map = useMapEvent("click", e => {
-    map.setView(e.latlng, map.getZoom(), {
-      animate: animateRef.current || true,
-    });
-  });
+	const map = useMapEvent('click', e => {
+		map.setView(e.latlng, map.getZoom(), {
+			animate: animateRef.current || true,
+		})
+	})
 
-  return null;
+	return null
 }
 
 export default function StaysInAreaPage() {
-  // Animated Panning
+	// Animated Panning
 
-  const animateRef = useRef(true);
+	const animateRef = useRef(true)
 
-  let { search } = useParams();
+	let { search } = useParams()
 
-  const [apartments, setApartments] = useState([]);
-  // console.log(apartments);
+	const [apartments, setApartments] = useState([])
+	// console.log(apartments);
 
-  useEffect(() => {
-    fetch(`http://localhost:4000/users/apartments/${search}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
+	// const loggedUser = useStore(state => state.loggedUser)
+	// const history = useHistory()
 
-        setApartments(data);
-      });
-  }, []);
+	// useEffect(() => {
+	// 	if (!loggedUser) history.push('/login-host')
+	// }, [loggedUser])
 
-  function toRender() {
-    if (apartments.length > 0) {
-      return (
-        <MapContainer
-          className="map"
-          center={
-            apartments.length > 0
-              ? [
-                  apartments[0].location[0].latitude,
-                  apartments[0].location[0].longitude,
-                ]
-              : [0, 0]
-          }
-          zoom={13}
-          scrollWheelZoom={true}
-        >
-          <TileLayer
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          {apartments.map((apartment, index) => (
-            <Marker
-              key={index}
-              position={[
-                apartment.location[0].latitude,
-                apartment.location[0].longitude,
-              ]}
-            >
-              <Popup className="center">
-                <img
-                  src={apartment.imageUrl1}
-                  alt={apartment.id}
-                  height="100px"
-                  width="100%"
-                />
-                <br />${apartment.priceNight}
-                <br />
-                {apartment.city} {apartment.postCode}
-              </Popup>
-              <Tooltip>
-                <strong>${apartment.priceNight}</strong>
-              </Tooltip>
-            </Marker>
-          ))}
-          <SetViewOnClick animateRef={animateRef} />
-        </MapContainer>
-      );
-    } else {
-      return <h4>No Apartments in set area</h4>;
-    }
-  }
+	useEffect(() => {
+		fetch(`http://localhost:4000/users/apartments/${search}`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			credentials: 'include',
+		})
+			.then(res => res.json())
+			.then(data => {
+				console.log(data)
 
-  return (
-    <>
-      <Header />
-      <PageBodyContainer>
-        <div className="cards">
-          <div className="cards-title">
-            <h1>Airbnb's in {search}</h1>
-          </div>
-          <StaysInAreaCards apartments={apartments} />
-        </div>
-        <div className="map map-container">{toRender()}</div>
-      </PageBodyContainer>
-      <Footer />
-    </>
-  );
+				setApartments(data)
+			})
+	}, [])
+
+	function toRender() {
+		if (apartments.length > 0) {
+			return (
+				<MapContainer
+					className="map"
+					center={
+						apartments.length > 0
+							? [
+									apartments[0].location[0].latitude,
+									apartments[0].location[0].longitude,
+							  ]
+							: [0, 0]
+					}
+					zoom={13}
+					scrollWheelZoom={true}>
+					<TileLayer
+						attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+						url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+					/>
+					{apartments.map((apartment, index) => (
+						<Marker
+							key={index}
+							position={[
+								apartment.location[0].latitude,
+								apartment.location[0].longitude,
+							]}>
+							<Popup className="center">
+								<img
+									src={apartment.imageUrl1}
+									alt={apartment.id}
+									height="100px"
+									width="100%"
+								/>
+								<br />${apartment.priceNight}
+								<br />
+								{apartment.city} {apartment.postCode}
+							</Popup>
+							<Tooltip>
+								<strong>${apartment.priceNight}</strong>
+							</Tooltip>
+						</Marker>
+					))}
+					<SetViewOnClick animateRef={animateRef} />
+				</MapContainer>
+			)
+		} else {
+			return <h4>No Apartments in set area</h4>
+		}
+	}
+
+	return (
+		<>
+			<Header />
+			<PageBodyContainer>
+				<div className="cards">
+					<div className="cards-title">
+						<h1>Airbnb's in {search}</h1>
+					</div>
+					<StaysInAreaCards apartments={apartments} />
+				</div>
+				<div className="map map-container">{toRender()}</div>
+			</PageBodyContainer>
+			<Footer />
+		</>
+	)
 }
