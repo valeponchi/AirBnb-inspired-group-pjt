@@ -72,14 +72,44 @@ const FlexApartDiv = styled.div`
   }
 `;
 
-export default function FlexibleApartments({ handleClick, apartments }) {
+export type Apartment = {
+  id: number;
+  priceNight: number;
+  bedrooms: number;
+  maxPeopleIn: number;
+  description: string;
+  city: string;
+  postCode: string;
+  road: string;
+  imageUrl1: string;
+  imageUrl2: string;
+  imageUrl3: string;
+  userOwnerId: number;
+  userRentingId: null;
+  location: [
+    id: number,
+    latitude: number,
+    longitude: number,
+    apartmentId: number
+  ];
+};
+
+type FlexProps = {
+  handleClick: () => void;
+  apartments: Apartment[];
+};
+
+export default function FlexibleApartments({
+  handleClick,
+  apartments,
+}: FlexProps) {
   console.log(apartments);
 
   function toRender() {
     if (apartments.length > 0) {
       return (
         <>
-          {apartments.map((apartment, index) => (
+          {apartments.map((apartment, index: number) => (
             <div className="flex-card" key={index}>
               <div className="image">
                 <Swiper
@@ -133,13 +163,5 @@ export default function FlexibleApartments({ handleClick, apartments }) {
       return <h4>Loading...</h4>;
     }
   }
-  return (
-    <FlexApartDiv>
-      {toRender()}
-
-      {/* <button className="flexible-main-button" onClick={() => handleClick()}>
-        Show Map <GrMapLocation />
-      </button> */}
-    </FlexApartDiv>
-  );
+  return <FlexApartDiv>{toRender()}</FlexApartDiv>;
 }
