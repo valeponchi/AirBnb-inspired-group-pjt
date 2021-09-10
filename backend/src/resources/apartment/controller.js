@@ -127,6 +127,21 @@ async function getApartmentsByCity(req, res) {
   }
 }
 
+async function getApartmentsWithLocations(req, res) {
+  try {
+    const result = await apartment.findMany({
+      include: {
+        location: true,
+      },
+    });
+    if (result) res.json(result);
+    if (!result) res.json({ msg: "City not found" });
+  } catch (e) {
+    console.log(e);
+    res.json(e.message);
+  }
+}
+
 const deleteOneApartment = async (req, res) => {
   console.log("req.params", req.params);
   try {
@@ -146,4 +161,5 @@ module.exports = {
   createOneApartment,
   getApartmentsByCity,
   deleteOneApartment,
+  getApartmentsWithLocations,
 };

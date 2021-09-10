@@ -1,43 +1,33 @@
 import React from "react";
 import styled from "styled-components";
-import {MdCopyright} from "react-icons/md";
+import { MdCopyright } from "react-icons/md";
 
-function Footer({className}){
-  
-    
-    
-
-    return(
-        <footer className={className}>
-            <div>
-            <MdCopyright className="icon"/>
+function Footer({ className }) {
+  return (
+    <footer className={className}>
+      <div>
+        <MdCopyright className="icon" />
         <p>Assignment Project Valentina, Anas, Sean</p>
-            </div>
-     
-
-
-        </footer>
-    )
+      </div>
+    </footer>
+  );
 }
 
 export default styled(Footer)`
+  display: grid;
+  place-content: center;
 
-display: grid;
-place-content: center;
-width: 80%;
-margin-left: auto;
-margin-right: auto;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 
-
-div{
+  div {
     display: grid;
     grid-template-columns: 30px 1fr;
     place-items: center;
-}
+  }
 
-.icon{
+  .icon {
     font-size: 1.2rem;
-}
-
-
-`
+  }
+`;
