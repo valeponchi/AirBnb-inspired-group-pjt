@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 import HomePageCard from '../styled-components/HomePageCard'
@@ -7,13 +7,8 @@ import SearchBar from '../components/SearchBar'
 import BecomeAHost from '../components/BecomeAHost'
 import Footer from '../components/Footer'
 import { useState } from 'react'
-import useStore from '../store'
 
-type LoginProps = {
-	className: string
-}
-
-function HomePage({ className }: LoginProps) {
+function HomePage({ className, userLoggedIn, setUserLoggedIn }) {
 	const getAways = [
 		{
 			name: 'London',
@@ -24,10 +19,6 @@ function HomePage({ className }: LoginProps) {
 			url: 'https://images.unsplash.com/photo-1623793478409-50c0c0478d26?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1334&q=80',
 		},
 	]
-
-	// THIS CODE GOES TO THE DASHBOARD
-	// IT IS THE ONLY PAGE WHERE ONLY THE LOGGED_IN USER CAN GO
-	const loggedUser = useStore(state => state.loggedUser)
 	const history = useHistory()
 
 	return (
@@ -43,7 +34,10 @@ function HomePage({ className }: LoginProps) {
 						Place to stay
 					</a>
 				</nav>
-				<BecomeAHost />
+				<BecomeAHost
+					userLoggedIn={userLoggedIn}
+					setUserLoggedIn={setUserLoggedIn}
+				/>
 			</header>
 
 			<main className="container">
@@ -60,7 +54,7 @@ function HomePage({ className }: LoginProps) {
 							onClick={() => {
 								history.push('/placestostay')
 							}}>
-							I'm flexible
+							Im flexible
 						</a>
 					</div>
 				</section>
