@@ -120,7 +120,6 @@ function HostingPage({ className }: LoginProps) {
 						value={becomeAHostForm.dateOfBirth}
 					/>
 					<button className="btnBecomeHost">Become a Host</button>
-					{/* <input type="submit" value="Login" /> */}
 				</form>
 			</main>
 			<Footer />

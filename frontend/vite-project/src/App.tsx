@@ -10,15 +10,14 @@ import OneApartmentHost from "./pages/OneApartmentHost";
 
 import HostDashBoardPage from "./pages/HostDashBoardPage";
 
-import LoginPage, { UserCredentials } from "./pages/LoginPage";
-import HostingPage from "./pages/HostingPage";
-import Footer from "./components/Footer";
+import LoginPage, { UserCredentials } from './pages/LoginPage'
+import HostingPage from './pages/HostingPage'
+import Footer from './components/Footer'
+import HostAddOne from './pages/HostAddOne'
 
-// type LoginProps = {
-// 	className: string
-// }
 
 function App() {
+
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [userId, setUserId] = useState();
 
@@ -73,6 +72,14 @@ function App() {
             userId={userId}
           />
         </Route>
+        
+        
+				<Route path="/addhostproperty">
+					<HostAddOne
+						userLoggedIn={userLoggedIn}
+						setUserLoggedIn={setUserLoggedIn}
+					/>
+				</Route>
         {/* <Route path="/:accomidationname">
           <h1>Hello world</h1>
         </Route> */}
