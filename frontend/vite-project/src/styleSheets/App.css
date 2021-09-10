@@ -28,6 +28,10 @@ input {
 	outline: none;
 }
 
+.radioBtn {
+	width: 50px;
+}
+
 /* input:focus {
 
 	border-color: #ff5a5f;
