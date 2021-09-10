@@ -1,15 +1,15 @@
-import React from "react";
-import styled from "styled-components";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import { BsPlusCircle } from "react-icons/bs";
-import { BiUpArrowAlt, BiCalendar } from "react-icons/bi";
-import PropertyCardImage from "../components/PropertyCardImage";
-import { Link, useHistory } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import React from 'react'
+import styled from 'styled-components'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import { BsPlusCircle } from 'react-icons/bs'
+import { BiUpArrowAlt, BiCalendar } from 'react-icons/bi'
+import PropertyCardImage from '../components/PropertyCardImage'
+import { Link, useHistory } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router'
 
-import useStore from "../store";
+import useStore from '../store'
 
 function HostDashBoardPage({ className, userLoggedIn, setUserLoggedIn, userId }) {
   // Get current user ID
@@ -115,119 +115,119 @@ function HostDashBoardPage({ className, userLoggedIn, setUserLoggedIn, userId })
 }
 
 export default styled(HostDashBoardPage)`
-  display: grid;
+	display: grid;
 
-  grid-gap: 30px;
+	grid-gap: 30px;
 
-  ul {
-    list-style-type: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 250px));
-    place-content: center;
-  }
+	ul {
+		list-style-type: none;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(100px, 250px));
+		place-content: center;
+	}
 
-  li {
-    display: inline-block;
-    place-self: center;
-  }
+	li {
+		display: inline-block;
+		place-self: center;
+	}
 
-  a {
-    text-decoration: none;
-    color: black;
-    text-align: center;
-  }
+	a {
+		text-decoration: none;
+		color: black;
+		text-align: center;
+	}
 
-  .pictureCardContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
-    grid-gap: 20px;
-  }
+	.pictureCardContainer {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
+		grid-gap: 20px;
+	}
 
-  main {
-    display: grid;
-    grid-gap: 30px;
-  }
+	main {
+		display: grid;
+		grid-gap: 30px;
+	}
 
-  h3 {
-    place-self: center;
-    font-size: 1.5rem;
-  }
+	h3 {
+		place-self: center;
+		font-size: 1.5rem;
+	}
 
-  .card {
-    border: 1px solid lightgrey;
-    position: relative;
-    width: 300px;
-    height: 300px;
-    border-radius: 20px;
-    display: grid;
-    place-content: center;
-    place-items: center;
-  }
+	.card {
+		border: 1px solid lightgrey;
+		position: relative;
+		width: 300px;
+		height: 300px;
+		border-radius: 20px;
+		display: grid;
+		place-content: center;
+		place-items: center;
+	}
 
-  .card p {
-    font-size: 1.5rem;
-  }
+	.card p {
+		font-size: 1.5rem;
+	}
 
-  .plusIcon {
-    position: absolute;
-    top: -3%;
-    right: -3%;
-    font-size: 2rem;
-    background-color: white;
-    z-index: 10;
-  }
+	.plusIcon {
+		position: absolute;
+		top: -3%;
+		right: -3%;
+		font-size: 2rem;
+		background-color: white;
+		z-index: 10;
+	}
 
-  .plusIcon:hover {
-    fill: green;
-  }
+	.plusIcon:hover {
+		fill: green;
+	}
 
-  .reviewHostedProperty {
-    display: grid;
-    grid-gap: 20px;
-  }
+	.reviewHostedProperty {
+		display: grid;
+		grid-gap: 20px;
+	}
 
-  .reviewHostedProperty h3 {
-    place-self: start;
-  }
+	.reviewHostedProperty h3 {
+		place-self: start;
+	}
 
-  .hostedProperty {
-    display: grid;
-    grid-gap: 20px;
-  }
+	.hostedProperty {
+		display: grid;
+		grid-gap: 20px;
+	}
 
-  .hostedProperty h3 {
-    place-self: start;
-  }
+	.hostedProperty h3 {
+		place-self: start;
+	}
 
-  .bookingsCardsContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  }
+	.bookingsCardsContainer {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+	}
 
-  .bookingCard {
-    width: 350px;
-    height: 200px;
-    border: 1px solid lightgrey;
-    display: grid;
-    place-content: center;
-    place-items: center;
-    border-radius: 20px;
-  }
+	.bookingCard {
+		width: 350px;
+		height: 200px;
+		border: 1px solid lightgrey;
+		display: grid;
+		place-content: center;
+		place-items: center;
+		border-radius: 20px;
+	}
 
-  .bookingCard .icon {
-    font-size: 4rem;
-  }
+	.bookingCard .icon {
+		font-size: 4rem;
+	}
 
-  .bookingCard p {
-    font-size: 1.5rem;
-  }
+	.bookingCard p {
+		font-size: 1.5rem;
+	}
 
-  .viewBookings {
-    display: grid;
-    grid-gap: 20px;
-  }
+	.viewBookings {
+		display: grid;
+		grid-gap: 20px;
+	}
 
-  .viewBookings h3 {
-    place-self: start;
-  }
-`;
+	.viewBookings h3 {
+		place-self: start;
+	}
+`
