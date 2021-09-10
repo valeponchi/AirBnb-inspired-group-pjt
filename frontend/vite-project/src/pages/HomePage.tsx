@@ -11,7 +11,7 @@ import { useState } from "react";
 
 
 
-function HomePage({className}){
+function HomePage({className, userLoggedIn, setUserLoggedIn}){
 
 
     const getAways = [ {
@@ -36,7 +36,7 @@ function HomePage({className}){
             Place to stay
         </a>
         </nav>
-       <BecomeAHost/>
+       <BecomeAHost userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn}/>
         </header>
         
         <main className="container">

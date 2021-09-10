@@ -9,16 +9,39 @@ import {IoMdPerson} from "react-icons/io"
 
 
 
-function BecomeAHost({className}){
+
+
+function BecomeAHost({className, userLoggedIn, setUserLoggedIn}){
     const history = useHistory()
+
+    
+    
+    // function userLocation(){
+    //     const location = history.location.pathname
+    //     if(location.includes())
+    // }
     
     return(
         <div className={className}>
-        <a onClick={() => {
+            {userLoggedIn ?  <a onClick={() => { 
+            setUserLoggedIn(false)
+            fetch("http://localhost:4000/logout", {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'include',
+            })
+            history.push("/home")
+        }} className="pointer">
+            Logout
+        </a> :  <a onClick={() => { 
+            
             history.push("/hosting")
         }} className="pointer">
             Become a host
-        </a>
+        </a>}
+        
         <div className="accountPill">
             <GiHamburgerMenu className="icon"/>
             <IoMdPerson className="icon"/>

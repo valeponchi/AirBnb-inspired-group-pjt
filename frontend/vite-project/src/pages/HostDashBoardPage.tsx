@@ -11,7 +11,7 @@ import { useParams } from "react-router";
 
 import useStore from "../store";
 
-function HostDashBoardPage({ className }) {
+function HostDashBoardPage({ className, userLoggedIn, setUserLoggedIn }) {
   // Get current user ID
   const [currentUserId, setCurrentUserId] = useState(1);
   const [hostedProperties, setHostedProperties] = useState([]);
@@ -49,6 +49,7 @@ function HostDashBoardPage({ className }) {
             return (
               <PropertyCardImage
                 Apartment={apartment}
+                currentUserId={currentUserId}
                 key={limitAparments.postCode}
               />
             );
@@ -63,7 +64,7 @@ function HostDashBoardPage({ className }) {
 
   return (
     <div className={className}>
-      <Header />
+      <Header userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
       <main className="container">
         <ul>
           <li>
