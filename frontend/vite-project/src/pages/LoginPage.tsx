@@ -51,9 +51,11 @@ function LoginPage({ className, setUserLoggedIn, setUserId }: LoginProps) {
 					setUserId(user.data.id)
 					history.push(`/dashboard/${user.data.id}`)
 				}
+
 				//store currentUser data in state and send the currenUser somewhere
 				//use.history
 			)
+		setLoginForm(initialForm)
 	}
 
 	return (
@@ -72,6 +74,7 @@ function LoginPage({ className, setUserLoggedIn, setUserId }: LoginProps) {
 						placeholder="Email"
 						name="email"
 						value={loginForm.email}
+						required
 					/>
 					<input
 						onChange={handleChange}
@@ -79,6 +82,8 @@ function LoginPage({ className, setUserLoggedIn, setUserId }: LoginProps) {
 						placeholder="Password"
 						name="password"
 						value={loginForm.password}
+						required
+						min={10}
 					/>
 					<button>Login</button>
 					{/* <input type="submit" value="Login" /> */}

@@ -1,3 +1,4 @@
+
 import React from "react";
 import styled from "styled-components"
 import {useHistory} from "react-router-dom"
@@ -85,168 +86,142 @@ function HomePage({className, userLoggedIn, setUserLoggedIn, userId}){
         <Footer/>
         </div>
     )
+
 }
 
 export default styled(HomePage)`
+	display: grid;
+	grid-template-rows: 150px 1fr 100px;
 
-    display: grid;
-    grid-template-rows: 150px 1fr 100px;
-   
-    position: relative;
-   
-  
+	position: relative;
 
-    header{
-        display: grid;
-        grid-template-columns: 150px 1fr 200px;
-        align-content: center;
-        color: white;
-    }
+	header {
+		display: grid;
+		grid-template-columns: 150px 1fr 200px;
+		align-content: center;
+		color: white;
+	}
 
-  
+	nav {
+		display: grid;
+		place-content: center;
+		color: white;
+	}
 
-    nav{
-        display: grid;
-        place-content: center;
-        color: white;
-    }
+	.backgroundImage {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -100;
+		width: 100vw;
+		height: calc(100vh - 75px);
+	}
 
-  
-    .backgroundImage{
-       position: absolute;
-       top: 0;
-        left: 0;
-       z-index: -100;
-      width: 100vw;
-       height: calc(100vh - 75px);
-    }
+	main {
+		display: grid;
+		place-items: center;
+	}
 
-    main{
-        display: grid;
-        place-items: center;
-        
-       
-    
+	.headingWithButton {
+		display: grid;
+		place-items: center;
+		place-self: center;
+		grid-gap: 30px;
+	}
 
-    }
+	.navAnimation {
+	}
 
-    .headingWithButton{
-        display: grid;
-        place-items: center;
-        place-self: center;
-        grid-gap: 30px;
-    }
+	h1 {
+		align-self: center;
+		color: black;
+		margin-right: 50px;
+	}
 
+	.flexibleButton {
+		display: grid;
+		place-items: center;
+		background-color: white;
+		height: 75px;
+		width: 200px;
+		border-radius: 50px;
+		margin-right: 50px;
+		font-size: 1.2rem;
+		box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+	}
 
-    .navAnimation{
+	.topSection {
+		display: grid;
+		height: calc(100vh - 200px);
+		grid-template-rows: 100px 1fr;
+	}
 
-    }
+	.liveAnywhereSection {
+		display: grid;
 
+		width: 100%;
+		grid-gap: 30px;
+	}
 
-  
+	h3 {
+		place-self: start;
+		font-size: 2rem;
+	}
 
-    h1{
-       align-self: center;
-       color: black;
-       margin-right: 50px;
-    }
+	ul {
+		list-style-type: none;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 366px));
+		grid-gap: 20px;
+	}
 
-    .flexibleButton{
-        display: grid;
-        place-items: center;
-        background-color: white;
-        height: 75px;
-        width: 200px;
-        border-radius: 50px;
-        margin-right: 50px;
-        font-size: 1.2rem;
-        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-       
-    }
+	.tryHosting {
+		margin-top: 100px;
+		width: 100%;
+		height: 500px;
+		margin-bottom: 60px;
+	}
 
-    .topSection{
-        display: grid;
-        height: calc(100vh - 200px);
-        grid-template-rows: 100px 1fr;
-    }
+	.tryHostingImage {
+		width: 100%;
+		display: grid;
+		overflow: hidden;
+		height: 500px;
+		border-radius: 20px;
+		position: relative;
+	}
 
- .liveAnywhereSection{
-        display: grid;
-       
-        width: 100%;
-        grid-gap: 30px;
+	.image-3 {
+		width: 100%;
+		display: block;
+		object-fit: none;
+		object-fit: fill;
+		z-index: -5;
+	}
 
-    }
+	.imageText {
+		color: white;
+		position: absolute;
 
-    h3{
-        place-self: start;
-        font-size: 2rem;
-        
-    }
+		top: 40%;
+		left: 100px;
+		display: grid;
+		grid-gap: 20px;
+	}
 
-    ul{
-        list-style-type: none;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 366px));
-        grid-gap: 20px;
-    }
+	.imageText h4 {
+		font-size: 3rem;
+	}
 
-    .tryHosting{
-        margin-top: 100px;
-        width: 100%;
-        height: 500px;
-        margin-bottom: 60px;
-       
-    }
-
-    .tryHostingImage{
-        width: 100%;
-        display: grid;
-        overflow: hidden;
-        height: 500px;
-        border-radius: 20px;
-        position: relative;
-        
-        
-    }
-
-    
-
-    
-    .image-3 {
-        width: 100%;
-  display: block;
-  object-fit: none;
-        object-fit: fill;
-        z-index: -5;
-      }
-
-      .imageText{
-          color: white;
-          position: absolute;
-          
-          top: 40%;
-          left: 100px;
-          display: grid;
-          grid-gap: 20px;
-      }
-
-      .imageText h4{
-        font-size: 3rem; 
-      }
-
-      .imageText a {
-          display: grid;
-          text-decoration: none;
-          background-color: white;
-          padding: 20px;
-          width: 100px;
-          place-items: center;
-          place-self: center;
-          border-radius: 20px;
-          color: black;
-      }
-
-   
-
+	.imageText a {
+		display: grid;
+		text-decoration: none;
+		background-color: white;
+		padding: 20px;
+		width: 100px;
+		place-items: center;
+		place-self: center;
+		border-radius: 20px;
+		color: black;
+	}
 `
