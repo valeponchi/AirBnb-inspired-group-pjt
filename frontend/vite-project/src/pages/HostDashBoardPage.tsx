@@ -11,104 +11,107 @@ import { useParams } from 'react-router'
 
 import useStore from '../store'
 
-function HostDashBoardPage({ className, userLoggedIn, setUserLoggedIn }) {
-	// Get current user ID
-	const [currentUserId, setCurrentUserId] = useState(1)
-	const [hostedProperties, setHostedProperties] = useState([])
-	let amountOfProperties = 0
-	//Fetch with user id
+function HostDashBoardPage({ className, userLoggedIn, setUserLoggedIn, userId }) {
+  // Get current user ID
+  const [currentUserId, setCurrentUserId] = useState(1);
+  const [hostedProperties, setHostedProperties] = useState([]);
+  let amountOfProperties = 0;
+  //Fetch with user id
 
-	const params = useParams()
+  const params = useParams()
+  
 
-	useEffect(() => {
-		setCurrentUserId(params.id)
-		fetch(`http://localhost:4000/users/${currentUserId}/apartments`, {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			credentials: 'include',
-		})
-			.then(resp => resp.json())
-			.then(data => setHostedProperties([data]))
-	}, [])
 
-	function loadingContent() {
-		if (hostedProperties.length === 1) {
-			const limitAparments = hostedProperties[0].data[0].apartmentOwned.slice(
-				0,
-				4
-			)
-			amountOfProperties = limitAparments.length
+  useEffect(() => {
+    setCurrentUserId(params.id)
+    fetch(`http://localhost:4000/users/${currentUserId}/apartments`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    })
+      .then(resp => resp.json())
+      .then(data => setHostedProperties([data]));
+  }, []);
 
-			return (
-				<>
-					{limitAparments.map(apartment => {
-						return (
-							<PropertyCardImage
-								Apartment={apartment}
-								currentUserId={currentUserId}
-								key={limitAparments.postCode}
-							/>
-						)
-					})}
-				</>
-			)
-		} else {
-			return <h1>Loading Properties</h1>
-		}
-	}
+  function loadingContent() {
+    if (hostedProperties.length === 1) {
+      const limitAparments = hostedProperties[0].data[0].apartmentOwned.slice(
+        0,
+        4
+      );
+      amountOfProperties = limitAparments.length;
 
-	return (
-		<div className={className}>
-			<Header userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
-			<main className="container">
-				<ul>
-					<li>
-						<a href="#AddHostedProperty">Add Hosted Property</a>
-					</li>
-					<li>
-						<a href="#ReviewHostedProperty">Review Hosted Property</a>
-					</li>
-					<li>
-						<a href="#ViewBookings">View Bookings</a>
-					</li>
-				</ul>
+      return (
+        <>
+          {limitAparments.map(apartment => {
+            return (
+              <PropertyCardImage
+                Apartment={apartment}
+                currentUserId={currentUserId}
+                key={limitAparments.postCode}
+              />
+            );
+          })}
+        </>
+      );
+    } else {
+      return <h1>Loading Properties</h1>;
 
-				<h3>Welcome To Host Dashboard</h3>
-				<section className="hostedProperty" id="AddHostedProperty">
-					<h3>Add Hosted Property</h3>
-					<div className="card">
-						<p>Click Add Button</p>
-						<Link to="/addhostproperty">
-							<BsPlusCircle className="plusIcon" />
-						</Link>
-					</div>
-				</section>
-				<section className="reviewHostedProperty" id="ReviewHostedProperty">
-					<h3>Review Hosted Properties</h3>
-					<div className="pictureCardContainer">{loadingContent()}</div>
-				</section>
-				<section id="ViewBookings" className="viewBookings">
-					<h3>View Bookings</h3>
-					<div className="bookingsCardsContainer">
-						<div className="bookingCard">
-							<BiUpArrowAlt className="icon" />
-							<p>+£1500</p>
-						</div>
-						<div className="bookingCard">
-							<BiCalendar className="icon" />
-							<p>Calender</p>
-						</div>
-						<div className="bookingCard">
-							<p>{amountOfProperties} Properties Hosted</p>
-						</div>
-					</div>
-				</section>
-			</main>
-			<Footer />
-		</div>
-	)
+    }
+  }
+
+  return (
+    <div className={className}>
+      <Header userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} userId={userId} />
+      <main className="container">
+        <ul>
+          <li>
+            <a href="#AddHostedProperty">Add Hosted Property</a>
+          </li>
+          <li>
+            <a href="#ReviewHostedProperty">Review Hosted Property</a>
+          </li>
+          <li>
+            <a href="#ViewBookings">View Bookings</a>
+          </li>
+        </ul>
+
+        <h3>Welcome To Host Dashboard</h3>
+        <section className="hostedProperty" id="AddHostedProperty">
+          <h3>Add Hosted Property</h3>
+          <div className="card">
+            <p>Click Add Button</p>
+            <Link to="/addhostproperty">
+              <BsPlusCircle className="plusIcon" />
+            </Link>
+          </div>
+        </section>
+        <section className="reviewHostedProperty" id="ReviewHostedProperty">
+          <h3>Review Hosted Properties</h3>
+          <div className="pictureCardContainer">{loadingContent()}</div>
+        </section>
+        <section id="ViewBookings" className="viewBookings">
+          <h3>View Bookings</h3>
+          <div className="bookingsCardsContainer">
+            <div className="bookingCard">
+              <BiUpArrowAlt className="icon" />
+              <p>+£1500</p>
+            </div>
+            <div className="bookingCard">
+              <BiCalendar className="icon" />
+              <p>Calender</p>
+            </div>
+            <div className="bookingCard">
+              <p>{amountOfProperties} Properties Hosted</p>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  );
 }
 
 export default styled(HostDashBoardPage)`
