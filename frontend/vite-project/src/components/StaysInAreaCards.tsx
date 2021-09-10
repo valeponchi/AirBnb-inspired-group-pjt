@@ -116,9 +116,9 @@ export default function StaysInAreaCards({ apartments }) {
             >
               <SwiperSlide>
                 <img
-                  onClick={() => {
-                    history.push(`/apartment/${apartment.id}`);
-                  }}
+                  // onClick={() => {
+                  //   history.push(`/apartment/${apartment.id}`);
+                  // }}
                   src={apartment.imageUrl1}
                   alt="yeet"
                   height="200px"
@@ -127,9 +127,9 @@ export default function StaysInAreaCards({ apartments }) {
               </SwiperSlide>
               <SwiperSlide>
                 <img
-                  onClick={() => {
-                    history.push(`/apartment/${apartment.id}`);
-                  }}
+                  // onClick={() => {
+                  //   history.push(`/apartment/${apartment.id}`);
+                  // }}
                   src={apartment.imageUrl2}
                   alt="yeet"
                   height="200px"
@@ -138,9 +138,9 @@ export default function StaysInAreaCards({ apartments }) {
               </SwiperSlide>
               <SwiperSlide>
                 <img
-                  onClick={() => {
-                    history.push(`/apartment/${apartment.id}`);
-                  }}
+                  // onClick={() => {
+                  //   history.push(`/apartment/${apartment.id}`);
+                  // }}
                   src={apartment.imageUrl3}
                   alt="yeet"
                   height="200px"
@@ -152,9 +152,9 @@ export default function StaysInAreaCards({ apartments }) {
 
           <div
             className="data"
-            onClick={() => {
-              history.push(`/apartment/${apartment.id}`);
-            }}
+            // onClick={() => {
+            //   history.push(`/apartment/${apartment.id}`);
+            // }}
           >
             <div className="info">
               <p className="grey">Private apartment at {apartment.road}</p>
