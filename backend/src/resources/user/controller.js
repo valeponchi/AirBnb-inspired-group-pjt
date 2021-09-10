@@ -9,6 +9,15 @@ const { createdWithHash } = require('../auth/services')
 async function createOneUser(req, res) {
 	const { email, password, role, firstName, lastName, dateOfBirth } = req.body
 
+	// const matchingUser = await user.findUnique({
+	// 	where: {
+	// 		email,
+	// 	},
+	// })
+
+	// if (matchingUser.email === email)
+	// 	return res.status(409).json({ msg: 'This email already exists!' })
+
 	const newUser = {
 		email,
 		password,
@@ -34,6 +43,7 @@ async function createOneUser(req, res) {
 		user: {
 			role: savedUser.role,
 			email: savedUser.email,
+			id: savedUser.id,
 		},
 	})
 }
@@ -47,6 +57,7 @@ const getAllUsers = async (req, res) => {
 // //GET ONE USER
 const getOneUser = async (req, res) => {
 	const { id } = req.currentUser
+	console.log('req.currentUser:', req.currentUser)
 
 	const oneUser = await user.findUnique({
 		where: { id: parseInt(id) },

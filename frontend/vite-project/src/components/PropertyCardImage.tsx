@@ -2,12 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-function PropertyCardImage({className, Apartment}){
+function PropertyCardImage({className, Apartment, currentUserId}){
    
-    const accomidationname = Apartment.postCode
+    console.log(Apartment)
+    const postCode = Apartment.postCode
+    const apartmentId = Apartment.extra.apartmentId
+    
+    console.log(apartmentId)
    
     return(
-        <Link to={`${accomidationname}`} className={className}>
+        <Link to={`/apartment/${currentUserId}/${apartmentId}/${postCode}`} className={className}>
         <div className="pictureCard">
         <img src={Apartment.imageUrl1}/> 
     </div></Link>

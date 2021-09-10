@@ -18,7 +18,7 @@ type LoginProps = {
 	className: string
 }
 
-function LoginPage({ className }: LoginProps) {
+function LoginPage({ className, setUserLoggedIn, setUserId }: LoginProps) {
 	const history = useHistory()
 	const [loginForm, setLoginForm] = useState<UserCredentials>(initialForm)
 
@@ -46,11 +46,16 @@ function LoginPage({ className }: LoginProps) {
 			.then(
 				user => {
 					setLoggedUser(user)
-					history.push(`/dashboard/${user.id}`)
+					setUserLoggedIn(true)
+					console.log(user.data.id)
+					setUserId(user.data.id)
+					history.push(`/dashboard/${user.data.id}`)
 				}
+
 				//store currentUser data in state and send the currenUser somewhere
 				//use.history
 			)
+		setLoginForm(initialForm)
 	}
 
 	return (
@@ -69,6 +74,7 @@ function LoginPage({ className }: LoginProps) {
 						placeholder="Email"
 						name="email"
 						value={loginForm.email}
+						required
 					/>
 					<input
 						onChange={handleChange}
@@ -76,6 +82,8 @@ function LoginPage({ className }: LoginProps) {
 						placeholder="Password"
 						name="password"
 						value={loginForm.password}
+						required
+						min={10}
 					/>
 					<button>Login</button>
 					{/* <input type="submit" value="Login" /> */}

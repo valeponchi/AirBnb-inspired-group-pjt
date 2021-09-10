@@ -6,50 +6,73 @@ import HomePage from "./pages/HomePage";
 import PlacesToStay from "./pages/PlacesToStay";
 import StaysInAreaPage from "./pages/StaysInAreaPage";
 
-import OneApartment from "./pages/OneApartment";
+import OneApartmentHost from "./pages/OneApartmentHost";
 
 import HostDashBoardPage from "./pages/HostDashBoardPage";
 
 import LoginPage, { UserCredentials } from "./pages/LoginPage";
+import HostingPage from "./pages/HostingPage";
+import Footer from "./components/Footer";
+
+// type LoginProps = {
+// 	className: string
+// }
 
 function App() {
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
+  const [userId, setUserId] = useState();
+
   return (
     <div className="App ">
       <Switch>
         <Route path="/" exact>
           <Redirect to="/home" />
         </Route>
-
         <Route path="/home">
-          <HomePage />
+          <HomePage
+            userLoggedIn={userLoggedIn}
+            setUserLoggedIn={setUserLoggedIn}
+            userId={userId}
+          />
         </Route>
-
         <Route path="/placestostay">
-          <PlacesToStay />
+          <PlacesToStayPage
+            userLoggedIn={userLoggedIn}
+            setUserLoggedIn={setUserLoggedIn}
+            userId={userId}
+          />
         </Route>
-
-        <Route path="/hosting"></Route>
-
+        <Route path="/hosting">
+          <HostingPage />
+        </Route>
         <Route path="/addhostproperty"></Route>
-
         {/* <Route path="/:acc"></Route>  This is causing a bug*/}
-
         <Route path="/login-host">
-          <LoginPage />
+          <LoginPage setUserLoggedIn={setUserLoggedIn} setUserId={setUserId} />
         </Route>
-
         <Route path="/staysin/:search">
-          <StaysInAreaPage />
+          <StaysInAreaPage
+            userLoggedIn={userLoggedIn}
+            setUserLoggedIn={setUserLoggedIn}
+            userId={userId}
+          />
         </Route>
 
-        <Route path="/apartment/:apartmentId">
-          <OneApartment />
+        <Route path="/apartment/:id/:apartmentId/:postCode">
+          <OneApartmentHost
+            userLoggedIn={userLoggedIn}
+            setUserLoggedIn={setUserLoggedIn}
+            userId={userId}
+          />
         </Route>
 
         <Route path="/dashboard/:id">
-          <HostDashBoardPage />
+          <HostDashBoardPage
+            userLoggedIn={userLoggedIn}
+            setUserLoggedIn={setUserLoggedIn}
+            userId={userId}
+          />
         </Route>
-
         {/* <Route path="/:accomidationname">
           <h1>Hello world</h1>
         </Route> */}

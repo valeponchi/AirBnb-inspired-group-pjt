@@ -3,10 +3,14 @@ import styled from "styled-components";
 import BecomeAHost from "./BecomeAHost";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
+import { useHistory } from "react-router";
 
 
 
-function Header({className}){
+function Header({className, userLoggedIn, setUserLoggedIn, userId}){
+    
+   
+
     return(
         <header className={className}>
             <div className="container headerStyle">
@@ -14,7 +18,7 @@ function Header({className}){
             <div className="search">
             <SearchBar/>
             </div>
-            <BecomeAHost/>
+            <BecomeAHost userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} userId={userId}/>
             </div>
         </header>
     )
@@ -23,6 +27,10 @@ function Header({className}){
 export default styled(Header)`
 
 border-bottom: 1px solid lightgrey;
+position: sticky;
+top: 0;
+background-color: white;
+z-index: 100;
 
 .headerStyle{
     display: grid;

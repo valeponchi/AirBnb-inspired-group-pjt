@@ -16,10 +16,12 @@ function Footer({ className }) {
 export default styled(Footer)`
   display: grid;
   place-content: center;
-
   width: 80%;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 0.8rem;
 
   div {
     display: grid;

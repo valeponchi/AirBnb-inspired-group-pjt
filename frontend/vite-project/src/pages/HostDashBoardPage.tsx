@@ -7,23 +7,23 @@ import { BiUpArrowAlt, BiCalendar } from "react-icons/bi";
 import PropertyCardImage from "../components/PropertyCardImage";
 import { Link, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router";
+
 import useStore from "../store";
 
-function HostDashBoardPage({ className }) {
+function HostDashBoardPage({ className, userLoggedIn, setUserLoggedIn, userId }) {
   // Get current user ID
   const [currentUserId, setCurrentUserId] = useState(1);
   const [hostedProperties, setHostedProperties] = useState([]);
   let amountOfProperties = 0;
   //Fetch with user id
 
-  //   const loggedUser = useStore(state => state.loggedUser);
-  //   const history = useHistory();
+  const params = useParams()
+  
 
-  //   useEffect(() => {
-  //     if (!loggedUser) history.push("/login-host");
-  //   }, [loggedUser]);
 
   useEffect(() => {
+    setCurrentUserId(params.id)
     fetch(`http://localhost:4000/users/${currentUserId}/apartments`, {
       method: "GET",
       headers: {
@@ -49,6 +49,7 @@ function HostDashBoardPage({ className }) {
             return (
               <PropertyCardImage
                 Apartment={apartment}
+                currentUserId={currentUserId}
                 key={limitAparments.postCode}
               />
             );
@@ -57,12 +58,13 @@ function HostDashBoardPage({ className }) {
       );
     } else {
       return <h1>Loading Properties</h1>;
+
     }
   }
 
   return (
     <div className={className}>
-      <Header />
+      <Header userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} userId={userId} />
       <main className="container">
         <ul>
           <li>

@@ -1,96 +1,92 @@
-import React, { useEffect } from 'react'
-import styled from 'styled-components'
-import { useHistory } from 'react-router-dom'
-import HomePageCard from '../styled-components/HomePageCard'
-import Logo from '../components/Logo'
-import SearchBar from '../components/SearchBar'
-import BecomeAHost from '../components/BecomeAHost'
-import Footer from '../components/Footer'
-import { useState } from 'react'
-import useStore from '../store'
 
-function HomePage({ className }) {
-	const getAways = [
-		{
-			name: 'London',
-			url: 'https://image.freepik.com/free-photo/beautiful-shot-tower-bridge-london-uk_181624-41859.jpg',
-		},
-		{
-			name: 'Wembley',
-			url: 'https://images.unsplash.com/photo-1623793478409-50c0c0478d26?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1334&q=80',
-		},
-	]
+import React from "react";
+import styled from "styled-components"
+import {useHistory} from "react-router-dom"
+import HomePageCard from "../styled-components/HomePageCard";
+import Logo from "../components/Logo";
+import SearchBar from "../components/SearchBar";
+import BecomeAHost from "../components/BecomeAHost";
+import Footer from "../components/Footer";
+import { useState } from "react";
 
-	// THIS CODE GOES TO THE DASHBOARD
-	// IT IS THE ONLY PAGE WHERE ONLY THE LOGGED_IN USER CAN GO
-	const loggedUser = useStore(state => state.loggedUser)
-	const history = useHistory()
 
-	return (
-		<div className={className}>
-			<header className="container">
-				<Logo />
-				<nav>
-					<a
-						onClick={() => {
-							history.push('/placestostay')
-						}}
-						className="pointer navAnimation">
-						Place to stay
-					</a>
-				</nav>
-				<BecomeAHost />
-			</header>
 
-			<main className="container">
-				<section className="topSection">
-					<img
-						src="https://a0.muscache.com/im/pictures/57b9f708-bb12-498c-bc33-769f8fc43e63.jpg?im_w=2560"
-						className="backgroundImage"
-					/>
-					<SearchBar />
-					<div className="headingWithButton">
-						<h1>Not sure where to go? Perfect.</h1>
-						<a
-							className="flexibleButton pointer"
-							onClick={() => {
-								history.push('/placestostay')
-							}}>
-							Im flexible
-						</a>
-					</div>
-				</section>
-				<section className="liveAnywhereSection">
-					<h3>Live anywhere</h3>
-					<ul>
-						{getAways.map(item => {
-							return <HomePageCard GetAway={item} />
-						})}
-					</ul>
-				</section>
 
-				<section className="tryHosting">
-					<div className="tryHostingImage">
-						<img
-							className="image-3"
-							src="https://a0.muscache.com/im/pictures/5b4dc94a-0b4c-4c27-b50f-9c5a5b93c775.jpg"
-						/>
-						<div className="imageText">
-							<h4>Try Hosting</h4>
-							<a
-								onClick={() => {
-									history.push('/hosting')
-								}}
-								className="pointer">
-								Host
-							</a>
-						</div>
-					</div>
-				</section>
-			</main>
-			<Footer />
-		</div>
-	)
+function HomePage({className, userLoggedIn, setUserLoggedIn, userId}){
+
+
+    const getAways = [ {
+        name: "London",
+        url: "https://image.freepik.com/free-photo/beautiful-shot-tower-bridge-london-uk_181624-41859.jpg"
+    }, 
+    { 
+        name: 'Wembley',
+        url: "https://images.unsplash.com/photo-1623793478409-50c0c0478d26?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1334&q=80"
+ }]
+    const history = useHistory()
+
+
+
+
+    return(
+        <div className={className}>
+        <header className="container">
+        <Logo/>
+        <nav>
+        <a onClick={() => {
+            history.push("/placestostay")
+        }} className="pointer navAnimation">
+            Place to stay
+        </a>
+        </nav>
+       <BecomeAHost userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} userId={userId}/>
+        </header>
+        
+        <main className="container">
+           <section className="topSection">
+           <img src="https://a0.muscache.com/im/pictures/57b9f708-bb12-498c-bc33-769f8fc43e63.jpg?im_w=2560" className="backgroundImage"/>
+           <SearchBar/>
+        <div className="headingWithButton">
+        <h1>
+        Not sure where to go? Perfect.
+        </h1>
+        <a className="flexibleButton pointer" onClick={() => {
+            history.push("/placestostay")
+        }} >Im flexible</a>
+        </div>
+       
+        </section>
+        <section className="liveAnywhereSection">
+         <h3>Live anywhere</h3>
+         <ul>
+             {getAways.map(item => {
+                 return(
+                     <HomePageCard GetAway={item} />
+                 )
+             })}
+        
+         </ul>
+        </section>
+
+        <section className="tryHosting">
+            <div className="tryHostingImage">
+                <img className="image-3" src="https://a0.muscache.com/im/pictures/5b4dc94a-0b4c-4c27-b50f-9c5a5b93c775.jpg"/>
+                <div className="imageText">
+                    <h4>Try Hosting</h4>
+                    <a onClick={() => {
+                        history.push("/hosting")
+                    }} className="pointer">Host</a>
+                    </div>
+                
+                </div>
+        </section>
+   
+            
+        </main>
+        <Footer/>
+        </div>
+    )
+
 }
 
 export default styled(HomePage)`
