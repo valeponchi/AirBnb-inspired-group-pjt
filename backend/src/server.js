@@ -20,10 +20,10 @@ app.use(cors({ origin: "http://localhost:3000", credentials: true })); // Enable
 
 // Auth
 // This is NOT under login protection
-app.use(authRouter);
+// app.use(authRouter);
 // This is your gate keeper to make sure the user is logged in!
 // Any route after this one will be protected by login!
-app.use(loginAuth);
+// app.use(loginAuth);
 
 // ROUTES
 app.use("/users", userRouter);
