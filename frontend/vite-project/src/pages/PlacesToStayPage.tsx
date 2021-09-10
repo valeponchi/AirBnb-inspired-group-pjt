@@ -4,10 +4,10 @@ import styled from 'styled-components'
 import Header from '../components/Header'
 import useStore from '../store'
 
-function PlacesToStayPage() {
+function PlacesToStayPage({userLoggedIn, setUserLoggedIn}) {
 	return (
 		<>
-			<Header />
+			<Header userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
 		</>
 	)
 }

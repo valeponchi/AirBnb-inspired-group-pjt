@@ -6,13 +6,19 @@ import HomePage from './pages/HomePage'
 import PlacesToStayPage from './pages/PlacesToStayPage'
 import StaysInAreaPage from './pages/StaysInAreaPage'
 
-import OneApartment from './pages/OneApartment'
+import OneApartmentHost from './pages/OneApartmentHost'
 
 import HostDashBoardPage from './pages/HostDashBoardPage'
 
+
 import LoginPage, { UserCredentials } from './pages/LoginPage'
 
+
+
 function App() {
+
+	const [userLoggedIn, setUserLoggedIn] = useState(false);
+	console.log(userLoggedIn)
 	return (
 		<div className="App ">
 			<Switch>
@@ -20,27 +26,27 @@ function App() {
 					<Redirect to="/home" />
 				</Route>
 				<Route path="/home">
-					<HomePage />
+					<HomePage userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
 				</Route>
 				<Route path="/placestostay">
-					<PlacesToStayPage />
+					<PlacesToStayPage userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
 				</Route>
 				<Route path="/hosting"></Route>
 				<Route path="/addhostproperty"></Route>
 				{/* <Route path="/:acc"></Route>  This is causing a bug*/}
 				<Route path="/login-host">
-					<LoginPage />
+					<LoginPage setUserLoggedIn={setUserLoggedIn} />
 				</Route>
 				<Route path="/staysin/:search">
-					<StaysInAreaPage />
+					<StaysInAreaPage userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
 				</Route>
 
-				<Route path="/apartment/:apartmentId">
-					<OneApartment />
+				<Route path="/apartment/:id/:apartmentId/:postCode">
+					<OneApartmentHost userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn}/>
 				</Route>
 
 				<Route path="/dashboard/:id">
-					<HostDashBoardPage />
+					<HostDashBoardPage userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
 				</Route>
 				{/* <Route path="/:accomidationname">
           <h1>Hello world</h1>
