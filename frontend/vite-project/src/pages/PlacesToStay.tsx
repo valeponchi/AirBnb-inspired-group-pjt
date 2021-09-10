@@ -7,7 +7,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 import { GrMapLocation } from "react-icons/gr";
-import { AiOutlineUnorderedList } from "react-icons/Ai";
+import { AiOutlineUnorderedList } from "react-icons/ai";
 
 const FlexibleDiv = styled.div`
   display: grid;

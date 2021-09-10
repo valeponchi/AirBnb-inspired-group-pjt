@@ -3,7 +3,7 @@ import "./styleSheets/App.css";
 import { Switch, Route, Redirect, useHistory } from "react-router";
 import HomePage from "./pages/HomePage";
 
-import PlacesToStay from "./pages/PlacesToStay";
+import PlacesToStayPage from "./pages/PlacesToStay";
 import StaysInAreaPage from "./pages/StaysInAreaPage";
 
 import OneApartmentHost from "./pages/OneApartmentHost";
