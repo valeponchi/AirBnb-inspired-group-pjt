@@ -30,7 +30,7 @@ border-bottom: 1px solid lightgrey;
 position: sticky;
 top: 0;
 background-color: white;
-z-index: 2000;
+z-index: 2002;
 
 .headerStyle{
     display: grid;
