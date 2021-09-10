@@ -27,3 +27,8 @@
 input {
 	outline: none;
 }
+
+/* input:focus {
+
+	border-color: #ff5a5f;
+} */
