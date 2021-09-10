@@ -106,12 +106,7 @@ export default function StaysInAreaCards({ apartments }) {
 		// >
 		<CardsContainer>
 			{apartments.map((apartment, index) => (
-				<CardContainer
-					key={index}
-					// onClick={() => {
-					// 	history.push(`/apartment/${apartment.id}`)
-					// }}
-				>
+				<CardContainer key={index}>
 					<div className="image">
 						<Swiper
 							pagination={{
@@ -147,7 +142,11 @@ export default function StaysInAreaCards({ apartments }) {
 						</Swiper>
 					</div>
 
-					<div className="data">
+					<div
+						className="data"
+						onClick={() => {
+							history.push(`/apartment/${apartment.id}`)
+						}}>
 						<div className="info">
 							<p className="grey">Private apartment at {apartment.road}</p>
 							<h1 className="no-bold">

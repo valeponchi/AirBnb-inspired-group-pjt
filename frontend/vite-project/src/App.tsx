@@ -12,6 +12,12 @@ import HostDashBoardPage from './pages/HostDashBoardPage'
 
 
 import LoginPage, { UserCredentials } from './pages/LoginPage'
+import HostingPage from './pages/HostingPage'
+import Footer from './components/Footer'
+
+// type LoginProps = {
+// 	className: string
+// }
 
 
 
@@ -31,7 +37,9 @@ function App() {
 				<Route path="/placestostay">
 					<PlacesToStayPage userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
 				</Route>
-				<Route path="/hosting"></Route>
+				<Route path="/hosting">
+					<HostingPage />
+				</Route>
 				<Route path="/addhostproperty"></Route>
 				{/* <Route path="/:acc"></Route>  This is causing a bug*/}
 				<Route path="/login-host">

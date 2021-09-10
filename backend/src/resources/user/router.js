@@ -40,7 +40,5 @@ userRouter.delete('/:id/apartments/:apartId', deleteOneApartment)
 
 //UPDATE ONE OF YOUR APARTMENTS
 // userRouter.patch('/:id/apartments/:id', updateOneApartment)
-//GET ONE OF YOUR APARTMENTS
-// userRouter.get('/:id/apartments/:id', getOneApartment)
 
 module.exports = userRouter
