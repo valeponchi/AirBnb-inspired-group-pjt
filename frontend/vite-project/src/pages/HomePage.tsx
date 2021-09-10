@@ -11,7 +11,7 @@ import { useState } from "react";
 
 
 
-function HomePage({className, userLoggedIn, setUserLoggedIn}){
+function HomePage({className, userLoggedIn, setUserLoggedIn, userId}){
 
 
     const getAways = [ {
@@ -25,6 +25,8 @@ function HomePage({className, userLoggedIn, setUserLoggedIn}){
     const history = useHistory()
 
 
+
+
     return(
         <div className={className}>
         <header className="container">
@@ -36,7 +38,7 @@ function HomePage({className, userLoggedIn, setUserLoggedIn}){
             Place to stay
         </a>
         </nav>
-       <BecomeAHost userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn}/>
+       <BecomeAHost userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} userId={userId}/>
         </header>
         
         <main className="container">

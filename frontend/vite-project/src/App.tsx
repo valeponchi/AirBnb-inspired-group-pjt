@@ -18,7 +18,9 @@ import LoginPage, { UserCredentials } from './pages/LoginPage'
 function App() {
 
 	const [userLoggedIn, setUserLoggedIn] = useState(false);
-	console.log(userLoggedIn)
+	const [userId, setUserId] = useState();
+
+
 	return (
 		<div className="App ">
 			<Switch>
@@ -26,27 +28,27 @@ function App() {
 					<Redirect to="/home" />
 				</Route>
 				<Route path="/home">
-					<HomePage userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
+					<HomePage userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} userId={userId} />
 				</Route>
 				<Route path="/placestostay">
-					<PlacesToStayPage userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
+					<PlacesToStayPage userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} userId={userId} />
 				</Route>
 				<Route path="/hosting"></Route>
 				<Route path="/addhostproperty"></Route>
 				{/* <Route path="/:acc"></Route>  This is causing a bug*/}
 				<Route path="/login-host">
-					<LoginPage setUserLoggedIn={setUserLoggedIn} />
+					<LoginPage setUserLoggedIn={setUserLoggedIn} setUserId={setUserId}  />
 				</Route>
 				<Route path="/staysin/:search">
-					<StaysInAreaPage userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
+					<StaysInAreaPage userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} userId={userId} />
 				</Route>
 
 				<Route path="/apartment/:id/:apartmentId/:postCode">
-					<OneApartmentHost userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn}/>
+					<OneApartmentHost userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} userId={userId}/>
 				</Route>
 
 				<Route path="/dashboard/:id">
-					<HostDashBoardPage userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
+					<HostDashBoardPage userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} userId={userId} />
 				</Route>
 				{/* <Route path="/:accomidationname">
           <h1>Hello world</h1>

@@ -80,7 +80,7 @@ function SetViewOnClick({ animateRef }) {
 	return null
 }
 
-export default function StaysInAreaPage({userLoggedIn, setUserLoggedIn}) {
+export default function StaysInAreaPage({userLoggedIn, setUserLoggedIn, userId}) {
 	
 	// Animated Panning
 
@@ -166,7 +166,7 @@ export default function StaysInAreaPage({userLoggedIn, setUserLoggedIn}) {
 
 	return (
 		<>
-			<Header userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
+			<Header userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} userId={userId}/>
 			<PageBodyContainer>
 				<div className="cards">
 					<div className="cards-title">

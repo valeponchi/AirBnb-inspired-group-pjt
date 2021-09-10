@@ -11,7 +11,7 @@ import { useParams } from "react-router";
 
 import useStore from "../store";
 
-function HostDashBoardPage({ className, userLoggedIn, setUserLoggedIn }) {
+function HostDashBoardPage({ className, userLoggedIn, setUserLoggedIn, userId }) {
   // Get current user ID
   const [currentUserId, setCurrentUserId] = useState(1);
   const [hostedProperties, setHostedProperties] = useState([]);
@@ -64,7 +64,7 @@ function HostDashBoardPage({ className, userLoggedIn, setUserLoggedIn }) {
 
   return (
     <div className={className}>
-      <Header userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
+      <Header userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} userId={userId} />
       <main className="container">
         <ul>
           <li>

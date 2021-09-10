@@ -7,7 +7,7 @@ import { useHistory } from "react-router";
 
 
 
-function Header({className, userLoggedIn, setUserLoggedIn}){
+function Header({className, userLoggedIn, setUserLoggedIn, userId}){
     
    
 
@@ -18,7 +18,7 @@ function Header({className, userLoggedIn, setUserLoggedIn}){
             <div className="search">
             <SearchBar/>
             </div>
-            <BecomeAHost userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn}/>
+            <BecomeAHost userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} userId={userId}/>
             </div>
         </header>
     )
@@ -27,6 +27,10 @@ function Header({className, userLoggedIn, setUserLoggedIn}){
 export default styled(Header)`
 
 border-bottom: 1px solid lightgrey;
+position: sticky;
+top: 0;
+background-color: white;
+z-index: 100;
 
 .headerStyle{
     display: grid;

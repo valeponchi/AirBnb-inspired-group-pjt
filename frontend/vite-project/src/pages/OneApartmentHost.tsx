@@ -11,7 +11,7 @@ import {FaHotTub, FaParking, FaSwimmingPool, FaWifi} from "react-icons/fa"
 
 
 import AirBnbLogo from "../assets/images/logo.png"
- function OneApartment({ className, userLoggedIn, setUserLoggedIn }) {
+ function OneApartment({ className, userLoggedIn, setUserLoggedIn, userId }) {
 
   const [apartment, setApartment] = useState({})
   const params = useParams();
@@ -60,7 +60,7 @@ import AirBnbLogo from "../assets/images/logo.png"
 
   return(
     <>
-    <Header userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn}/>
+    <Header userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} userId={userId}/>
      <main className={className}>
        <h1>AirBnb Room / {params.postCode}</h1>
        <ul>

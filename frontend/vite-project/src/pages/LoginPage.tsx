@@ -18,7 +18,7 @@ type LoginProps = {
 	className: string
 }
 
-function LoginPage({ className, setUserLoggedIn }: LoginProps) {
+function LoginPage({ className, setUserLoggedIn, setUserId }: LoginProps) {
 	const history = useHistory()
 	const [loginForm, setLoginForm] = useState<UserCredentials>(initialForm)
 
@@ -48,6 +48,7 @@ function LoginPage({ className, setUserLoggedIn }: LoginProps) {
 					setLoggedUser(user)
 					setUserLoggedIn(true)
 					console.log(user.data.id)
+					setUserId(user.data.id)
 					history.push(`/dashboard/${user.data.id}`)
 				}
 				//store currentUser data in state and send the currenUser somewhere
