@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 
 import styled from "styled-components";
 
@@ -13,7 +13,19 @@ import {
 
 import "leaflet/dist/leaflet.css";
 
-import { AiOutlineUnorderedList } from "react-icons/Ai";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// import Swiper core and required modules
+import SwiperCore, { Pagination, Navigation } from "swiper";
+
+// install Swiper modules
+SwiperCore.use([Pagination, Navigation]);
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 const FlexMapDiv = styled.div`
   .map-container {
@@ -29,6 +41,19 @@ const FlexMapDiv = styled.div`
 
   .map {
     height: 100vh;
+  }
+
+  .mySwiper {
+    width: auto;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: white;
+  }
+
+  .swiper-pagination-bullet {
+    --swiper-theme-color: white;
   }
 `;
 
@@ -74,12 +99,39 @@ export default function FlexibleMap({ handleClick, apartments }) {
               ]}
             >
               <Popup className="center">
-                <img
-                  src={apartment.imageUrl1}
-                  alt={apartment.id}
-                  height="100px"
-                  width="100%"
-                />
+                <Swiper
+                  pagination={{
+                    clickable: true,
+                  }}
+                  navigation={true}
+                  loop={true}
+                  className="mySwiper"
+                >
+                  <SwiperSlide>
+                    <img
+                      src={apartment.imageUrl1}
+                      alt={apartment.id}
+                      height="150px"
+                      width="100%"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src={apartment.imageUrl2}
+                      alt={apartment.id}
+                      height="150px"
+                      width="100%"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src={apartment.imageUrl3}
+                      alt={apartment.id}
+                      height="150px"
+                      width="100%"
+                    />
+                  </SwiperSlide>
+                </Swiper>
                 <br />${apartment.priceNight}
                 <br />
                 {apartment.city} {apartment.postCode}

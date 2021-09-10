@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import styled from "styled-components";
 import Header from "../components/Header";
-import useStore, { Apartment } from "../store";
+import StaysInAreaCards from "../components/StaysInAreaCards";
+import Footer from "../components/Footer";
 
 import {
   MapContainer,
@@ -16,8 +17,20 @@ import {
 } from "react-leaflet";
 
 import "leaflet/dist/leaflet.css";
-import StaysInAreaCards from "../components/StaysInAreaCards";
-import Footer from "../components/Footer";
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// import Swiper core and required modules
+import SwiperCore, { Pagination, Navigation } from "swiper";
+
+// install Swiper modules
+SwiperCore.use([Pagination, Navigation]);
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 const PageBodyContainer = styled.div`
   display: grid;
@@ -50,13 +63,24 @@ const PageBodyContainer = styled.div`
     height: 100vh;
   }
 
+  .center .mySwiper {
+    width: auto;
+  }
+
+  .center .swiper-button-next,
+  .center .swiper-button-prev {
+    color: white;
+  }
+
+  .center .swiper-pagination-bullet {
+    --swiper-theme-color: white;
+  }
+
   .no-wrap {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-
-  
+  }  
 
   @media screen and (max-width: 1200px) {
     .map {
@@ -132,12 +156,39 @@ export default function StaysInAreaPage() {
               ]}
             >
               <Popup className="center">
-                <img
-                  src={apartment.imageUrl1}
-                  alt={apartment.id}
-                  height="100px"
-                  width="100%"
-                />
+                <Swiper
+                  pagination={{
+                    clickable: true,
+                  }}
+                  navigation={true}
+                  loop={true}
+                  className="mySwiper"
+                >
+                  <SwiperSlide>
+                    <img
+                      src={apartment.imageUrl1}
+                      alt={apartment.id}
+                      height="150px"
+                      width="100%"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src={apartment.imageUrl2}
+                      alt={apartment.id}
+                      height="150px"
+                      width="100%"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src={apartment.imageUrl3}
+                      alt={apartment.id}
+                      height="150px"
+                      width="100%"
+                    />
+                  </SwiperSlide>
+                </Swiper>
                 <br />${apartment.priceNight}
                 <br />
                 {apartment.city} {apartment.postCode}
