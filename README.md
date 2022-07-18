@@ -4,7 +4,7 @@ Netflix inspired (clone).
 
 ![Homepage](airbnb-inspired-app-homepage.png)
 
-# boolean-uk-group-final-pjt
+# Airbnb-inspired-educational-pjt
 
 ### To do:
 
