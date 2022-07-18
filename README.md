@@ -4,6 +4,8 @@ done to learn more about Team work, tasks, React with hooks, NodeJS, Express, Pr
 
 Using Zustand as React state management: [https://zustand-demo.pmnd.rs/](https://zustand-demo.pmnd.rs/).
 
+Map used: [React Leaflet - link](https://react-leaflet.js.org/)
+
 Airbnb inspired (clone).
 
 ## __Homepage:__
