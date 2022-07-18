@@ -1,3 +1,9 @@
+Educational project - done to learn more about Team work, tasks, React with hooks, NodeJS, Express, Prisma, HTML/CSS, Postgres.
+Using Zustand as React state management: [https://zustand-demo.pmnd.rs/](https://zustand-demo.pmnd.rs/).
+Netflix inspired (clone).
+
+![Homepage](airbnb-inspired-app-homepage.png)
+
 # boolean-uk-group-final-pjt
 
 ### To do:
