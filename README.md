@@ -6,7 +6,7 @@ Using Zustand as React state management: [https://zustand-demo.pmnd.rs/](https:/
 
 Map used: [React Leaflet - link](https://react-leaflet.js.org/)
 
-Airbnb inspired (clone).
+### Airbnb inspired (clone).
 
 ## __Homepage:__
 
